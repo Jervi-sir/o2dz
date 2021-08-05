@@ -57,7 +57,7 @@ class AccounceController extends Controller
         $article->save();
 
         Toastr::success('🤍  شكرا لك على مساعدتنا ', '', ["positionClass" => "toast-top-center"]);
-        return back();
+        return redirect(route('annonce.manage'));
     }
 
     public function all()

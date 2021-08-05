@@ -41,10 +41,10 @@
                 <a href="{{ route('annonce.find') }}" class="{{ (request()->is('/')) ? 'active' : '' }}">  Accueil</a>
             </li>
             <li class="menu-item">
-                <a href="{{ route('annonce.add') }}" class="{{ (request()->is('/add')) ? 'active' : '' }}">  Ajouter une annonce</a>
+                <a href="{{ route('annonce.add') }}" class="{{ (request()->is('add')) ? 'active' : '' }}">  Ajouter une annonce</a>
             </li>
             <li class="menu-item">
-                <a href="{{ route('annonce.manage') }}" class="{{ (request()->is('/announce/manage')) ? 'active' : '' }}">  Gerer mes annoces</a>
+                <a href="{{ route('annonce.manage') }}" class="{{ (request()->is('manage')) ? 'active' : '' }}">  Gérer mes annoces</a>
             </li>
             <li class="menu-item">
                 <a href="{{ route('about') }}" class="{{ (request()->is('about')) ? 'active' : '' }}">  À propos de la page</a>
@@ -75,13 +75,18 @@
                     </form>
                     @else
                     <!-- Register -->
-                    <button class=" contact-btn mr-0">
-                        <a href="{{ route('register') }}" class="no-decration">Register</a>
-                    </button>
+                    <a href="{{ route('register') }}" class="no-decration">
+                        <button class="header-btn" class=" contact-btn mr-0">
+                            Register
+                        </button>
+                    </a>
                     <!-- Login -->
-                    <button class=" contact-btn mr-0">
-                        <a href="{{ route('login') }}" class="no-decration">Log in</a>
-                    </button>
+                    
+                        <a href="{{ route('login') }}" class="no-decration">
+                            <button class="header-btn" class=" contact-btn mr-0">
+                                Log in
+                            </button>
+                        </a>
                     @endauth
                 </div>
             </div>
@@ -92,15 +97,21 @@
     </nav>
 </div>
 <script>
+    /*
     const icons = document.querySelectorAll('.icon');
         icons.forEach(icon => {
             icon.addEventListener('click', (event) => {
                 icon.classList.toggle("open");
             });
         });
-
+*/
         function collapse() {
+            const icons = document.querySelectorAll('.icon');
+            icons.forEach(icon => {
+                icon.classList.toggle("open");
+            });
             var coll = document.getElementById("navigation");
+
             //document.getElementsByClassName('body')[0].style.height  = "100%";
             if (coll.style.display === "block") {
                 coll.style.display = "none";
@@ -140,4 +151,12 @@
     .btn_cont {
         margin-left: auto;
     }
+
+    .header-btn:hover {
+        cursor: pointer;
+        background: #d2e1fa !important;
+        color: lightslategray !important;
+        transition: 0.5s;
+    }
+
 </style>

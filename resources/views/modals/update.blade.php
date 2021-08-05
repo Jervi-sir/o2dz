@@ -2,7 +2,7 @@
     <div class="content">
         <div class="header-text">
             <h2 class="target-name">
-                edit announce
+                Modifier
             </h2>
             <form action="{{ route('annonce.update') }}" method="POST">
                 @csrf
@@ -56,7 +56,7 @@
             </form>
         </div>
         <div class="btn-container">
-            <button class="btn" type="submit" onclick="submitUpdate()">Update</button>
+            <button class="btn" type="submit" onclick="submitUpdate()">Save</button>
             <button class="btn"  id="close-modal">Cancel</button>
         </div>
     </div>

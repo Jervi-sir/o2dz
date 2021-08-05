@@ -3,15 +3,15 @@
        
         <div class="header-text">
             <h2 class="target-name">
-                activate announce
+                reactiver l'announce ?
             </h2>
-            Are you sure you want to <span class="blue"> activate </span>  this announce
+            L'annonce tweli ttaficha fl la liste de recherche
         </div>
         <div class="btn-container">
             <form action="{{ route('announce.activate') }}" method="POST">
                 @csrf
                 <input type="hidden" id="activate-item-id" name="item_id">
-                <button class="btn" href="#">Yes</button>
+                <button class="btn" href="#">oui</button>
             </form>
             <button class="btn" href="#" id="close-activateModal">Cancel</button>
         </div>

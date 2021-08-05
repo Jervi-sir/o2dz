@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/toastr.css">
+    <script src="js/toastr.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body>
     <div class="body">
         @include('elements.header')
         <div class="contact">
-            
             <h1>
                 Thank you choosing to help us
             </h1>
@@ -21,8 +22,15 @@
                 Veuillez remplir vos coordonnées, afin que s'identifier
             </h2>
             <h5 class="text-center">
-                Login
+                S'identifier
             </h5>
+            @if ($errors->any())
+                <div class="text-center error">
+                    @foreach ($errors->all() as $error)
+                        <span>{{ $error }}</span>
+                    @endforeach
+                </div>
+            @endif
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="phone-number" v-for="(input,k) in phone_numbers" :key="k">
@@ -31,9 +39,7 @@
                 <input class="input" name="password" type="password" placeholder="password" autocomplete="new-password" required>
                 <input type="checkbox" name="remember" checked style="display: none">
 
-                <button type="submit" >Login</button>
-                
-
+                <button class="submit-btn" type="submit" >Login</button>
             </form>
             <div class="create text-center">
                 <h4>I don't have an account !</h4>
@@ -43,6 +49,11 @@
             </div>
         </div>
     <style>
+        .error {
+            color: #ff8181;
+            display: table;
+            margin: 1rem auto;
+        }
         .create {
             margin-top: 1rem;
         }
@@ -132,7 +143,7 @@
         .success, .error {
             text-align: center;
             font-weight: normal;
-            font-size: 20px;
+            /*font-size: 20px;*/
             color: rgb(38 165 127);
             background: rgb(38 165 127 / 23%);
             padding: 5px 20px;
@@ -176,13 +187,21 @@
         margin-top: 50px;
         }
 
-        button {
+        .submit-btn {
         background: #BFD7FF;
         border-radius: 7px;
         padding: 15px 45px;
         border: none;
+        font-size: 15px;
+        letter-spacing: 2px;
         font-family: inherit;
-        color: #323843;
+        color: white;
+        }
+        .submit-btn:hover {
+            cursor: pointer;
+            background: #d2e1fa;
+            color: lightslategray;
+            transition: 0.5s;
         }
 
         .row {

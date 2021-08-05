@@ -155,6 +155,7 @@
                     {
                         var phone_list = (data[i].phone_number).replace('[', '').replace(']', '').replaceAll('"', '');
                         var phone_array = phone_list.split(',');
+                        var location = results[i].location == null ? '' : results[i].location;
                         var todo = ''+
                             '<div class="card m-th" onclick="showModal(this)">'+
                                 '<input class="phone-array" type="hidden" value="' + phone_array + '">' +
@@ -170,8 +171,8 @@
                                     '<div class="location" >'+
                                         '<img src="images/location.svg">'+
                                         '<span v-text="item.address">'+
-                                        data[i].location + 
-                                        '-' +
+                                        location + 
+                                        ' - ' +
                                         data[i].wilaya + 
                                         '</span>'+
                                     '</div>'+
@@ -198,8 +199,9 @@
     }
     //json_encode( unserialize( $article->phone_number))
     function filter(ele) {
-        console.log(ele.value)
+        //console.log(ele.value)
         $("#article-list").empty();
+        var count = 0;
         filter_type = ele.value;
         if(filter_type != 0)
         {
@@ -209,6 +211,7 @@
                 {
                     var phone_list = (results[i].phone_number).replace('[', '').replace(']', '').replaceAll('"', '');
                     var phone_array = phone_list.split(',');
+                    var location = results[i].location == null ? '' : results[i].location;
                     var todo = ''+
                             '<div class="card m-th" onclick="showModal(this)">'+
                                 '<input class="phone-array" type="hidden" value="' + phone_array + '">' +
@@ -224,8 +227,8 @@
                                     '<div class="location" >'+
                                         '<img src="images/location.svg">'+
                                         '<span v-text="item.address">'+
-                                        results[i].location + 
-                                        '-' +
+                                        location + 
+                                        ' - ' +
                                         results[i].wilaya + 
                                         '</span>'+
                                     '</div>'+
@@ -240,16 +243,51 @@
                                 '</div>'+
                             '</div>';
                     jQuery('#article-list').append(todo);
+                    count++;
                 }
-                $("#item-found").text(results.length + ' found');
             }
+            $("#item-found").text(count + ' found');
+
         }
         else {
             for(var i = 0; i < results.length; i++)
             {
-                var todo = '<div class="card m-th" onclick="showModal(this)"> <div class="name" v-text="item.name">' + results[i].name + '</div> <div class="location" > <img src="images/location.svg"> <span v-text="item.address">'+ results[i].location + '-' + results[i].wilaya + '</span> </div> <div class="phone-number "> <span >'+ results[i].phone_number + '</span></div></div>';
+                var phone_list = (results[i].phone_number).replace('[', '').replace(']', '').replaceAll('"', '');
+                var phone_array = phone_list.split(',');
+                var location = results[i].location == null ? '' : results[i].location;
+                var todo = ''+
+                            '<div class="card m-th" onclick="showModal(this)">'+
+                                '<input class="phone-array" type="hidden" value="' + phone_array + '">' +
+                                '<div class="row justify-between">'+
+                                    '<div class="name" v-text="item.name">' + 
+                                        results[i].name +
+                                    '</div>'+ 
+                                    '<div class="type"> ' +
+                                        results[i].type +
+                                    '</div>' +
+                                ' </div>'+
+                                '<div class="row justify-between">'+
+                                    '<div class="location" >'+
+                                        '<img src="images/location.svg">'+
+                                        '<span v-text="item.address">'+
+                                            location  + 
+                                        ' - ' +
+                                        results[i].wilaya + 
+                                        '</span>'+
+                                    '</div>'+
+                                    '<div class="cost">'  +
+                                        results[i].cost +
+                                    '</div>' +
+                                '</div>'+
+                                '<div class="phone-number ">'+
+                                    '<span>'+ 
+                                    phone_array + 
+                                    '</span>'+
+                                '</div>'+
+                            '</div>';
                 jQuery('#article-list').append(todo);
             }
+            $("#item-found").text(results.length + ' found');
         }
     }
 </script>

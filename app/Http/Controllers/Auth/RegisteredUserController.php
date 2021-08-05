@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Exception;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Wilaya;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
-use App\Models\Wilaya;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Validation\ValidationException;
 
 class RegisteredUserController extends Controller
 {
@@ -53,14 +55,24 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'phone_number' => $request->phone_number,
-            //'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role_id' => $role_id,
-            'wilaya_id' => $wilaya_id,
-        ]);
+        try{
+            $user = User::create([
+                'name' => $request->name,
+                'phone_number' => $request->phone_number,
+                //'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role_id' => $role_id,
+                'wilaya_id' => $wilaya_id,
+            ]);
+        } catch(Exception $e) {
+            $error = ValidationException::withMessages([
+                'error1' => ['Kayen li khdm b had numero d telephone 😐,'],
+                'error2' => ['t9der tktb a7rouf f numbero 🙂, hada t9riban my secret.'],
+             ]);
+             throw $error;
+        }
+
+        
 
         event(new Registered($user));
 

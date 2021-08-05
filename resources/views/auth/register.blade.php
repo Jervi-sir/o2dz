@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/main.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Document</title>
+    <title>Register</title>
 </head>
 <body>
     <div class="body">
@@ -19,6 +19,16 @@
             <h2>
                 Veuillez remplir vos coordonnées, afin que s'inscritre
             </h2>
+            <h5 class="text-center">
+                Créer un compte
+            </h5>
+            @if ($errors->any())
+                <div class="text-center error">
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
             <form action="{{ route('register') }}" method="POST">
                 @csrf
                 <div class="phone-number" v-for="(input,k) in phone_numbers" :key="k">
@@ -34,21 +44,31 @@
                 <br>
                 <select name="wilaya" class="custom-select">
                     @foreach (\App\Models\Wilaya::all() as $wilaya )
-                    <option value="{{ $wilaya->number }}">{{ $wilaya->name }}</option>
+                    <option value="{{ $wilaya->number }}">{{ $wilaya->number }} - {{ $wilaya->name }}</option>
                     @endforeach
                 </select>    
                 
-                <button type="submit" >Login</button>
+                <button class="submit-btn" type="submit" >Creer mon compte</button>
                 
             </form>
             <div class="create text-center">
-                <h4>I alread have an account !</h4>
+                <h4>3andi un compte !</h4>
                 <h4>
-                    <a href="{{route('login')}}">Login</a>
+                    <a href="{{route('login')}}">s'identifier</a>
                 </h4>
             </div>
         </div>
     <style>
+        .error {
+            display: flex;
+            flex-direction: column;
+            color: #ff8181;
+            display: table;
+            margin: 1rem auto;
+        }
+        .body {
+            padding-bottom: 2rem;
+        }
         .create {
             margin-top: 1rem;
         }
@@ -133,7 +153,6 @@
         .success, .error {
             text-align: center;
             font-weight: normal;
-            font-size: 20px;
             color: rgb(38 165 127);
             background: rgb(38 165 127 / 23%);
             padding: 5px 20px;
@@ -177,13 +196,21 @@
         margin-top: 50px;
         }
 
-        button {
+        .submit-btn {
         background: #BFD7FF;
         border-radius: 7px;
         padding: 15px 45px;
         border: none;
+        font-size: 15px;
+        letter-spacing: 2px;
         font-family: inherit;
-        color: #323843;
+        color: white;
+        }
+        .submit-btn:hover {
+            cursor: pointer;
+            background: #d2e1fa;
+            color: lightslategray;
+            transition: 0.5s;
         }
 
         .row {
@@ -247,5 +274,5 @@
   </body>
   </html>
 <!-- Validation Errors
-<x-auth-validation-errors class="mb-4" :errors="$errors" />
+
  -->

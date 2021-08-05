@@ -3,7 +3,7 @@
         
         <div class="header-text">
             <h2 class="target-name">
-                Delete announce
+                Supprimer l'annonce ?
             </h2>
             Are you sure you want to <span class="red"> delete </span> this announce
         </div>

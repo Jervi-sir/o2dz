@@ -53,27 +53,30 @@
 
 @section('script')
 <script>
-    $(document.body).on('click', '.btn-remove-phone' ,function(){
-        $(this).closest('.phone-input').remove();
-    });
-    
-    function addPhone() {
-        var index = $('.phone-input').length + 1;
-        console.log(index);
-        $('#phone-list').append('' +
-            '<div class="phone-input">'+
-                '<input class="input" name="phone['+ index +']" type="text" placeholder="Phone Number" required>'+
-                '<span class="input-group-btn">'+
-                    '<button type="button" class="btn-remove-phone" >-</button>'+
-				'</span>'+
-            '</div>'
-        );
-    }
+$(document.body).on('click', '.btn-remove-phone' ,function(){
+    $(this).closest('.phone-input').remove();
+});
+
+function addPhone() {
+    var index = $('.phone-input').length + 1;
+    console.log(index);
+    $('#phone-list').append('' +
+        '<div class="phone-input">'+
+            '<input class="input" name="phone['+ index +']" type="text" placeholder="Phone Number" required>'+
+            '<span class="input-group-btn">'+
+                '<button type="button" class="btn-remove-phone" >-</button>'+
+            '</span>'+
+        '</div>'
+    );
+}
 </script>
 @endsection
 
 @section('style')
 <style>
+    .contact {
+        padding-bottom: 2rem;
+    }
     #phone-list input {
         margin-bottom: 0;
     }
@@ -89,6 +92,8 @@
         padding: 0 1rem;
         background: #fd8383;
         color: white;
+        border: none;
+        border-radius: 5px;
     }
     .add-btn button:hover,
     .btn-remove-phone:hover {
@@ -99,9 +104,10 @@
     .add-btn button {
         padding: 5px 30px;
         color: white;
-        background: #19b5fe;
+        background: #19fedf !important;
         margin-bottom: 2rem;
         font-weight: 700;
+        padding: 5px 45px !important;
     }
     .row-submit {
         display: flex;
@@ -118,8 +124,9 @@
         background: #4ecdc4;
         color: white;
     }
+    
     .body {
-        height: 100vh;
+        height: 100%;
     }
     .hideAnimation {
         opacity: 0;
@@ -238,7 +245,6 @@
         padding: 15px 45px;
         border: none;
         font-family: inherit;
-        color: #323843;
     }
 
     .row {

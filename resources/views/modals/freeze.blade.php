@@ -3,15 +3,15 @@
        
         <div class="header-text">
             <h2 class="target-name">
-                Freeze announce
+                Cacher l'announce ?
             </h2>
-            Are you sure you want to <span class="blue"> freeze </span>  this announce
+            had l'annonce ma tzidch tban f la liste de recherche, lakin t9der t3awed tredha 
         </div>
         <div class="btn-container">
             <form action="{{ route('announce.freeze') }}" method="POST">
                 @csrf
                 <input type="hidden" id="freeze-item-id" name="item_id">
-                <button class="btn" href="#">Yes</button>
+                <button class="btn" href="#">Oui</button>
             </form>
             <button class="btn" href="#" id="close-freezeModal">Cancel</button>
         </div>
