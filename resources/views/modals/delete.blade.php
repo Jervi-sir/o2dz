@@ -30,7 +30,7 @@
         // When the user clicks on <close> (x), close the modal
         close.onclick = function() {
             modal.style.display = "none";
-            console.log('close');
+            //console.log('close');
         }
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {

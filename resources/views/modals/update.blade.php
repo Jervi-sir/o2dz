@@ -93,7 +93,7 @@
         var location = $('#location_' + nth).text();
         var phone_number = $('#phoneNumber_' + nth).val();
         var phone_array = JSON.parse(phone_number);
-        console.log(phone_number);
+        //console.log(phone_number);
         
         $('#update-item-id').val(id) ; 
         $('#modal_name').val(name) ; 
@@ -119,7 +119,7 @@
             );
         }
         var len = $('.phone-number').length;
-        console.log(len);
+        //console.log(len);
 
         var modal = document.getElementById("updateModal");
         var close = document.getElementById("close-modal");
@@ -129,7 +129,7 @@
         close.onclick = function() {
             modal.style.display = "none";
             $('#modal_phoneNumber').empty();
-            console.log('close');
+            //console.log('close');
         }
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
@@ -147,7 +147,7 @@
             48-57 - (0-9)Numbers
             */
             if ( (keyCode != 8 || keyCode ==32 ) && (keyCode < 48 || keyCode > 57)) { 
-                console.log('igga')
+                //console.log('igga')
             return false;
             }
         });

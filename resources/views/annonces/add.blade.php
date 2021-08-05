@@ -59,7 +59,7 @@ $(document.body).on('click', '.btn-remove-phone' ,function(){
 
 function addPhone() {
     var index = $('.phone-input').length + 1;
-    console.log(index);
+    //console.log(index);
     $('#phone-list').append('' +
         '<div class="phone-input">'+
             '<input class="input" name="phone['+ index +']" type="text" placeholder="Phone Number" required>'+
