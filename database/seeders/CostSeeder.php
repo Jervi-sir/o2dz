@@ -14,7 +14,7 @@ class CostSeeder extends Seeder
      */
     public function run()
     {
-        $types = array("free", "paid", "rent");
+        $types = array("Gratuit", "Payant", "Location");
         for($i = 1; $i <= count($types); $i++)
         {
             DB::table('costs')->insert([

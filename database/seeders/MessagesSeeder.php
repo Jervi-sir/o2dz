@@ -15,13 +15,34 @@ class MessagesSeeder extends Seeder
     public function run()
     {
         DB::table('messages')->insert([
-            'text' => 'admin',
+            'text' => 'اطمئن, سنحاول مساعدتك',
         ]);
         DB::table('messages')->insert([
-            'text' => 'person',
+            'text' => 'اذكر الله’ فيطمئن بالك',
         ]);
         DB::table('messages')->insert([
-            'text' => 'supplier',
+            'text' => 'خذ Omega 3  لتعزيز صحتك',
+        ]);
+        DB::table('messages')->insert([
+            'text' => ' اسمح لنفسك ببعض من النوم ان امكن ',
+        ]);
+        DB::table('messages')->insert([
+            'text' => ' مهما كانت الاحوال, أعلم أن شخصًا ما مهتم بك  ',
+        ]);
+        DB::table('messages')->insert([
+            'text' => ' جميعنا اخوة و نبفي متمسكين بالبعض  ',
+        ]);
+        DB::table('messages')->insert([
+            'text' => '🤲 باسم الله  ',
+        ]);
+        DB::table('messages')->insert([
+            'text' => ' اغسل ايديك و انفك حالما تدخل منزلك   ',
+        ]);
+        DB::table('messages')->insert([
+            'text' => ' قي نفسك ',
+        ]);
+        DB::table('messages')->insert([
+            'text' => '🤲 ندعو الله ان يقويكم  ',
         ]);
     }
 }
