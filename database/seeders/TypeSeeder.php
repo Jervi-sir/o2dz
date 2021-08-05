@@ -14,7 +14,7 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        $types = array("Condensateur", "Oxygen", "Bouteil", "Rechargement");
+        $types = array("Concentrateur", "Bouteille", "Reservoirs", "Rechargement", "Reparation");
         for($i = 1; $i <= count($types); $i++)
         {
             DB::table('types')->insert([
