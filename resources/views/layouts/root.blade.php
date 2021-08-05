@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/main.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" href="images/logo.svg"/>
-    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="css/toastr.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="js/toastr.js"></script>
     @yield('title')
