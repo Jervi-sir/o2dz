@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="images/logo.svg"/>
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="js/toastr.js"></script>
     @yield('title')
 </head>
 <body>
