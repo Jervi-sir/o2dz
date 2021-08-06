@@ -104,8 +104,8 @@ class AccounceController extends Controller
     public function findGet(Request $request)
     {
         $wilaya_id = Wilaya::where('number', $request->wilaya_number)->first()->id;
-        //$articles = Article::where('wilaya_id', $wilaya_id)->where('active', 1)->get();
-        $articles = Article::where('wilaya_id', $wilaya_id)->get();
+        $articles = Article::where('wilaya_id', $wilaya_id)->where('active', 1)->get();
+        //$articles = Article::where('wilaya_id', $wilaya_id)->get();
         $array_articles = [];
         foreach($articles as $article)
         {
