@@ -38,7 +38,7 @@
                 </div>
               </div>
               <footer>
-                Made with <i>♥</i> by by :: 2KingsWebsites
+                Made with <i>♥</i> by :: 2KingsWebsites
             </footer>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>

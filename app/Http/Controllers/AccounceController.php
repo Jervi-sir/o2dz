@@ -17,6 +17,8 @@ class AccounceController extends Controller
     public function add()
     {
         $wilayas = Wilaya::all();
+        $user = Auth()->user();
+        $announce_count = $user->articles()->count();
 
         $types = Type::all();
         $costs = Cost::all();
@@ -24,12 +26,18 @@ class AccounceController extends Controller
         return view('annonces.add', ['wilayas' => $wilayas, 
                                         'types' => $types, 
                                         'costs' => $costs, 
-                                        'phone_number' => $phone_number
+                                        'phone_number' => $phone_number,
+                                        'announce_count' => $announce_count
                                     ]);
     }
 
     public function store(Request $request)
     {
+        if(count($request->phone) > 5)
+        {
+            Toastr::success('a77 dont change js code tho, little snoppy, but i like u since u took time to inspect this code, send me a message at 0558054300 writing ( Jervi i know iverj u fukin slave XD ) will be waiting for you ', '', ["positionClass" => "toast-top-center"]);
+            return back();
+        }
         $array_phone = [];
         foreach($request->phone as $phone)
         {
@@ -46,6 +54,7 @@ class AccounceController extends Controller
         $article->wilaya_id = $wilaya->id;
         $article->type_id = $type->id;
         $article->cost_id = $cost->id;
+        $article->location = $request->location;
 
         $article->name = $request->name;
         $article->phone_number = $phone_encode;

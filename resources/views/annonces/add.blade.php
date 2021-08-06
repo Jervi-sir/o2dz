@@ -7,11 +7,14 @@
 @section('content')
 <div class="contact">
     {!! Toastr::message() !!}
+    @if($announce_count < 7)
     <h1>
         Thank you choosing to help us
     </h1>
     <h2>
-        Veuillez remplir vos coordonnées, afin que s'identifier
+        Veuillez remplir les details de l'annonce
+        <p>d'oxygène</p>
+        <p class="arabic-font">من فضلك ، لا إعلانات مزيفة🙏</p>
     </h2>
     <form action="{{ route('annonce.store') }}" method="POST">
         @csrf
@@ -41,12 +44,39 @@
         </div>
         <div class="row-submit add-btn">
             <button type="button" onclick="addPhone()" >+</button>
-
+            <div class="count-row">
+                <span id="phone-count">
+                4 / 5 
+                </span>
+                <span class="count-text">
+                    <p>numbers</p>
+                    <p>lefts</p>
+                </span>
+            </div>
         </div>
         <div class="row-submit">
             <button class="submit" type="submit">Ajouter</button>
         </div>
     </form>
+    @else
+    <h2 class="sorry-message arabic-font">
+        <p>
+            نحن آسفون 😥 وضعنا الحد الأقصى عند 7 إعلان لبعض الأسباب
+        </p>
+        <p>
+            يمكنك حذف أحد الإعلانات الافضل الإعلانات المجمدة
+        </p>
+        <p>
+            أو اتصل بنا إذا واجهتك مشكلة
+        </p>
+    </h2>
+    <h1>
+        <a href="{{ route('annonce.manage') }}">
+           > Gérer mes annoces <
+        </a>
+    </h1>
+    @endif
+
 </div>
 <!--  -->
 @endsection
@@ -55,25 +85,87 @@
 <script>
 $(document.body).on('click', '.btn-remove-phone' ,function(){
     $(this).closest('.phone-input').remove();
+    var index = $('.phone-input').length;
+    $('#phone-count').text(5 - index + " / 6 ");
+    $('.count-row').removeClass('red');
+    $('.count-row').removeClass('shake');
 });
 
 function addPhone() {
     var index = $('.phone-input').length + 1;
     //console.log(index);
-    $('#phone-list').append('' +
-        '<div class="phone-input">'+
-            '<input class="input" name="phone['+ index +']" type="text" placeholder="Phone Number" required>'+
-            '<span class="input-group-btn">'+
-                '<button type="button" class="btn-remove-phone" >-</button>'+
-            '</span>'+
-        '</div>'
-    );
+    if(index <= 5) {
+        $('#phone-count').text(5 - index + " / 5 ");
+        $('#phone-list').append('' +
+            '<div class="phone-input">'+
+                '<input class="input" name="phone['+ index +']" type="text" placeholder="Phone Number" required>'+
+                '<span class="input-group-btn">'+
+                    '<button type="button" class="btn-remove-phone" >-</button>'+
+                '</span>'+
+            '</div>'
+        );
+    }
+    else {
+        $('.count-row').addClass('red');
+        $('.count-row').addClass('shake');
+    }
+
 }
 </script>
 @endsection
 
 @section('style')
 <style>
+    h1 a {
+        color: inherit;
+    }
+    .sorry-message p{
+        margin-bottom: 1rem;
+    }
+    /* http://waitanimate.wstone.io/#!/ */
+    .shake {
+        animation: shake-animation 3s ease;
+        transform-origin: 50% 50%;
+    }
+    
+    @keyframes shake-animation {
+        0% {
+            transform: translate(0, 0);
+        }
+        1.78571% {
+            transform: translate(5px, 0);
+        }
+        3.57143% {
+            transform: translate(0, 0);
+        }
+        5.35714% {
+            transform: translate(5px, 0);
+        }
+        7.14286% {
+            transform: translate(0, 0);
+        }
+        8.92857% {
+            transform: translate(5px, 0);
+        }
+        10.71429% {
+            transform: translate(0, 0);
+        }
+        100% {
+            transform: translate(0, 0);
+        }
+    }
+
+    .red {
+        color: #fd8383;
+    }
+    .count-row {
+        display: flex;
+        gap: 0.5rem;
+    }
+    .count-row p {
+        font-size: 10px;
+        text-align: center;
+    }
     .contact {
         padding-bottom: 2rem;
     }
@@ -95,6 +187,10 @@ function addPhone() {
         border: none;
         border-radius: 5px;
     }
+    .add-btn {
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
     .add-btn button:hover,
     .btn-remove-phone:hover {
         cursor: pointer;
@@ -105,7 +201,6 @@ function addPhone() {
         padding: 5px 30px;
         color: white;
         background: #19fedf !important;
-        margin-bottom: 2rem;
         font-weight: 700;
         padding: 5px 45px !important;
     }

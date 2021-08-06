@@ -18,7 +18,7 @@
             <select name="wilaya"class="custom-select" onchange="search(this)">
                 <option value="0" selected disabled hidden>Select Ville</option>
                 @foreach ($wilayas as $wilaya)
-                    <option value="{{ $wilaya->number }}">{{ $loop->index +1 }} - {{ $wilaya->name }} ( {{ $count[$loop->index] }} )</option>
+                    <option value="{{ $wilaya->number }}">{{ $wilaya->number }} - {{ $wilaya->name }} ( {{ $count[$loop->index] }} )</option>
                 @endforeach
             </select>
         </form>

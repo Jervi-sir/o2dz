@@ -92,7 +92,7 @@
             </div>
         </div>
         <footer>
-            Made with <i>♥</i> by by :: 2KingsWebsites
+            Made with <i>♥</i> by :: 2KingsWebsites
         </footer>
     </nav>
 </div>

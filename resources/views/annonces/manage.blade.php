@@ -11,8 +11,8 @@
     <h1>
         Thank you choosing to help us
     </h1>
-    <h2>
-        Veuillez remplir vos coordonnées, afin que s'identifier
+    <h2 class="arabic-font">
+        يمكنك نشر 7 إعلانات الأكسجين فقط
     </h2>
 </div>
 @if($articles->count())
@@ -35,7 +35,7 @@
             <div class="name" id="name_{{ $loop->index }}">{{ $article->name }}</div>
             <div class="location" >
                 <span id="location_{{ $loop->index }}">{{ $article->location }}</span>
-                <span>{{ $article->wilaya }}</span>
+                <span>{{ $article->wilaya_id }} - {{ $article->wilaya }}</span>
             </div>
             
             <div class="details">
@@ -97,6 +97,15 @@
 
 @section('style')
 <style>
+#article-list .item:nth-of-type(even) {
+    /* background: linear-gradient(52.35deg, #D2E1FB 31.01%, #EAF1FF 82.46%); */
+    background: linear-gradient(52.35deg, #b9d2fd 31.01%, #EAF1FF 82.46%);
+}
+
+#article-list .item:nth-of-type(odd) {
+    /* background: linear-gradient(52.35deg, #ECF2FF 31.01%, #FFFFFF 82.46%);*/
+    background: linear-gradient(344deg, #e8efff 31.01%, #FFFFFF 82.46%);
+}
 .non-found {
     padding-bottom: 2rem;
 }
