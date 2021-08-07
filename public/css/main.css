@@ -652,7 +652,7 @@ footer a {
         margin-top: 0px;
     }
     .modal .content {
-        width: auto;
+        /*width: auto;*/
     }
 }
 

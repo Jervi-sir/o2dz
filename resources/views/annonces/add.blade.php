@@ -39,7 +39,7 @@
         </select>
         <div id="phone-list">
             <div class="phone-input">
-                <input class="input" name="phone[1]" type="text" value="{{ $phone_number }}" placeholder="Phone Number" required>
+                <input class="input" name="phone[1]" type="text" minlength="8" maxlength="10" value="{{ $phone_number }}" placeholder="Phone Number" required>
             </div>
         </div>
         <div class="row-submit add-btn">
@@ -98,7 +98,7 @@ function addPhone() {
         $('#phone-count').text(5 - index + " / 5 ");
         $('#phone-list').append('' +
             '<div class="phone-input">'+
-                '<input class="input" name="phone['+ index +']" type="text" placeholder="Phone Number" required>'+
+                '<input class="input" name="phone['+ index +']" minlength="8" maxlength="10" type="text" placeholder="Phone Number" required>'+
                 '<span class="input-group-btn">'+
                     '<button type="button" class="btn-remove-phone" >-</button>'+
                 '</span>'+

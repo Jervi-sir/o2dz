@@ -116,7 +116,8 @@
 }
 .tool button {
     font-weight: 400;
-    letter-spacing: 5px;
+    letter-spacing: 2px;
+    font-size: 12px;
 }
 .row-submit {
     display: flex;
