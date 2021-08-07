@@ -11,6 +11,7 @@
         <h5>
             Select Your Location
         </h5>
+        <span id="test"></span>
     </div>
     <div class="row ">
         <form action="{{ route('findGet') }}" method="POST">
@@ -113,6 +114,7 @@
 
 @section('script')
 <script>
+    
     /*----TOast
     
     setTimeout(function(){ 
@@ -132,6 +134,7 @@
         if(wilaya_number != 0)
         {
             $("#type_select").prop( "disabled", false );
+            
             $("#article-list").empty();
             $.ajaxSetup({
                 headers: {
@@ -149,13 +152,14 @@
                 data: formData,
                 dataType: 'json',
                 success: function (data) {
+
                     //console.log(data);
-                    results = data;
                     for(var i = 0; i < data.length; i++)
                     {
-                        var phone_list = (data[i].phone_number).replace('[', '').replace(']', '').replaceAll('"', '');
-                        var phone_array = phone_list.split(',');
-                        var location = results[i].location == null ? '' : results[i].location;
+                        var phone_list = data[0].phone_number.replace('["', '').replace('"]', '');
+                        var phone_array = phone_list.split('","');
+                        var location = data[i].location == null ? '' : data[i].location;
+
                         var todo = ''+
                             '<div class="card m-th" onclick="showModal(this)">'+
                                 '<input class="item-id" type="hidden" value="' + data[i].id + '">' +
@@ -201,6 +205,7 @@
                     console.log(data);
                 }
             });
+            
         }
     }
     //json_encode( unserialize( $article->phone_number))
