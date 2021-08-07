@@ -15,22 +15,13 @@
             </div>
         </div>
 
-        <!-- Hamburder -->
-        <div class="hamburger" onclick="collapse()">
-            <div class="wraper">
-                <div class="icon nav-icon-1" id="hamburger-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
+        <!-- Hamburger-->
+        <div class="menu-wrapper" onclick="collapse()">
+            <div class="hamburger-menu"></div>	  
         </div>
+        
+
+
     </header>
 
     <!-- #NAV MENU -->
@@ -106,19 +97,18 @@
         });
 */
         function collapse() {
-            const icons = document.querySelectorAll('.icon');
-            icons.forEach(icon => {
-                icon.classList.toggle("open");
-            });
+            $('.hamburger-menu').toggleClass('animate');
+            //const icons = document.querySelectorAll('.icon');
+            //icons.forEach(icon => {
+            //    icon.classList.toggle("open");
+            //});
             var coll = document.getElementById("navigation");
 
-            //document.getElementsByClassName('body')[0].style.height  = "100%";
-            if (coll.style.display === "block") {
-                coll.style.display = "none";
-                coll.classList.remove('collapse-animate');
+            //if menu display none 
+            if($('#navigation:visible').length == 0) {
+                $('#navigation').slideDown();
             } else {
-                coll.style.display = "block";
-                coll.classList.add('collapse-animate');
+                $('#navigation').slideUp();
             }
         }
 </script>
@@ -158,5 +148,63 @@
         color: lightslategray !important;
         transition: 0.5s;
     }
+        
+    .menu-wrapper {
+        width: 38px;
+        height: 50px;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    .hamburger-menu,
+    .hamburger-menu:after,
+    .hamburger-menu:before {
+        width: 37px;
+        height: 5px;
+    }
+
+    .hamburger-menu {
+        position: relative;
+        border-radius: 20px;
+        transform: translateY(17px);
+        background: #D3E1FC;
+        transition: all 0ms 300ms;
+    }
+    .hamburger-menu.animate {
+        background: rgba(255, 255, 255, 0);
+    }
+
+    .hamburger-menu:before {
+        content: "";
+        border-radius: 20px;
+        position: absolute;
+        left: 0;
+        bottom: 11px;
+        background: #D3E1FC;
+        transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .hamburger-menu:after {
+        content: "";
+        border-radius: 20px;
+        position: absolute;
+        left: 0;
+        top: 11px;
+        background: #D3E1FC;
+        transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .hamburger-menu.animate:after {
+        top: 0;
+        transform: rotate(45deg);
+        transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .hamburger-menu.animate:before {
+        bottom: 0;
+        transform: rotate(-45deg);
+        transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+        
 
 </style>

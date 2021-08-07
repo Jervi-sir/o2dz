@@ -238,6 +238,7 @@ header {
     margin-bottom: 2rem;
     box-shadow: inset 0px -7px 1px #79abffc2, inset 0px 7px 1px #e5eeff;
     border-radius: 15px;
+    padding-bottom: 1rem;
 }
 
 .collapse-animate {
