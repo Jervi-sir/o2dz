@@ -18,7 +18,7 @@ class CreateReportsTable extends Migration
             $table->unsignedBigInteger('article_id');
             $table->foreign('article_id')->references('id')->on('articles');
 
-            $table->string('reason')->nullable();
+            $table->string('reporter_token');
 
             $table->timestamps();
         });
