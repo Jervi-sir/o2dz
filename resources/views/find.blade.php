@@ -52,6 +52,10 @@
     </div>
     <div id="article-list">
     </div>
+    <h3 class="bottom-message">
+        si vous avez un equipement d'oxygène à announcer,
+        <p><a href="{{ route('annonce.add') }}">vous pouvez l'ajouter</a> </p> 
+    </h3>
 </div>
 @include('modals.show')
  <!--
@@ -70,6 +74,15 @@
 
 @section('style')
 <style>
+    .bottom-message {
+        font-weight: 100;
+        font-size: 15px;
+        text-align: center;
+    }
+    .bottom-message a {
+        letter-spacing: 2px;
+        color: rgb(73, 73, 73);
+    }
 .slide-up {
     transform: translateY(0);
     transition: 0.5s;
