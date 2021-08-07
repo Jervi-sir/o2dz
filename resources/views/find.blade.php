@@ -114,20 +114,7 @@
 
 @section('script')
 <script>
-    
-    /*----TOast
-    
-    setTimeout(function(){ 
-        $('#toast').addClass('slide-up');
-     }, 1000);
 
-     setTimeout(function(){ 
-        $('#toast').addClass('slide-down');
-     }, 4000);
-     setTimeout(function(){ 
-        $('#toast').hide();
-     }, 5000);
-      ---*/
     var results;
     function search(ele) {
         wilaya_number = ele.value;
