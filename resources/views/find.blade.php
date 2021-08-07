@@ -220,6 +220,7 @@
             {
                 if(results[i].type_id == filter_type)
                 {
+                    
                     var phone_list = data[0].phone_number.replace('["', '').replace('"]', '');
                     var phone_array = phone_list.split('","');
                     var location = results[i].location == null ? '' : results[i].location;
