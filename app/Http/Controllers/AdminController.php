@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Models\Wilaya;
 use App\Models\Article;
 use App\Models\Message;
+use App\Models\Report;
+use App\Models\Signal;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -64,6 +66,34 @@ class AdminController extends Controller
         $messages = Message::all();
         
         return view('admin.messages',['messages' => $messages]);
+    }
+
+    public function reported()
+    {
+        $articles = Report::all();
+        
+        return view('admin.reported',['articles' => $articles]);
+    }
+
+    public function toDelete()
+    {
+        $articles = Signal::all();
+        
+        return view('admin.toDelete',['articles' => $articles]);
+    }
+
+
+    /*----------View------------*/
+    public function signalsView(Request $request)
+    {
+        //signal object
+        $signal = Signal::find($request->id);
+        //article
+        $article = $signal->article()->first();
+        //user
+        $user = $article->user()->first();
+        $reports = Report::where('article_id', $article->id)->get();
+        return view('admin.viewReport', ['signal' => $signal, 'article' => $article, 'user' => $user , 'reports' => $reports]);
     }
 
     /*----------Add------------*/
@@ -136,6 +166,30 @@ class AdminController extends Controller
         $type->delete();
         return back();
     }
+
+  
+    public function reportDelete(Request $request)
+    {
+        $signal = Signal::find($request->signal_id);
+        $article = Article::find($request->article_id);
+        $report_array = $request->report_id;
+
+        for($i = 0; $i < count($report_array); $i++)
+        {
+            $report = Report::find($report_array[$i]);
+            $report->delete();
+        }
+
+        $signal->delete();
+        $article->delete();
+
+        return redirect()->route('admin.home');;
+    }
+    
+
+    
+
+    
 
 
     /*----- edit --------------*/

@@ -18,6 +18,7 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [AccounceController::class, 'find'])->name('annonce.find');
 Route::post('/announce/get', [AccounceController::class, 'findGet'])->name('findGet');
+Route::post('/announce/report', [AccounceController::class, 'report'])->name('report');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/team', [PageController::class, 'team'])->name('team');
 
@@ -41,7 +42,11 @@ Route::middleware(['auth', 'role.admin'])->group(function () {
     Route::get('/Jervi/types', [AdminController::class, 'types'])->name('admin.types');
     Route::get('/Jervi/users', [AdminController::class, 'users'])->name('admin.users');
     Route::get('/Jervi/wilaya', [AdminController::class, 'wilaya'])->name('admin.wilaya');
-
+    Route::get('/Jervi/reported', [AdminController::class, 'reported'])->name('admin.reported');
+    Route::get('/Jervi/toDelete', [AdminController::class, 'toDelete'])->name('admin.toDelete');
+    
+    Route::post('/Jervi/zv/signals', [AdminController::class, 'signalsView'])->name('admin.signals.view');
+    
     Route::post('/Jervi/za/costs', [AdminController::class, 'costsAdd'])->name('admin.costs.add');
     Route::post('/Jervi/za/messages', [AdminController::class, 'messagesAdd'])->name('admin.messages.add');
     Route::post('/Jervi/za/roles', [AdminController::class, 'rolesAdd'])->name('admin.roles.add');
@@ -49,6 +54,7 @@ Route::middleware(['auth', 'role.admin'])->group(function () {
 
     Route::post('/Jervi/zd/costs', [AdminController::class, 'costsDelete'])->name('admin.costs.delete');
     Route::post('/Jervi/zd/messages', [AdminController::class, 'messagesDelete'])->name('admin.messages.delete');
+    Route::post('/Jervi/zd/report', [AdminController::class, 'reportDelete'])->name('admin.report.delete');
     Route::post('/Jervi/zd/roles', [AdminController::class, 'rolesDelete'])->name('admin.roles.delete');
     Route::post('/Jervi/zd/types', [AdminController::class, 'typesDelete'])->name('admin.types.delete');
 });

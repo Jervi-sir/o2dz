@@ -13,6 +13,7 @@
             <th>ID</th>
             <th>User_id</th>
             <th>Active</th>
+            <th>Reports</th>
             <th>Name</th>
             <th>Phone Number</th>
             <th>Location</th>
@@ -28,8 +29,13 @@
                 <td> {{ $article->id }} </td>
                 <td> {{ $article->user()->first()->id }} </td>
                 <td> {{ $article->active }} </td>
+                <td> {{ $article->reports()->count() }} </td>
                 <td> {{ $article->name }} </td>
-                <td> {{ $article->phone_number }} </td>
+                <td>
+                    @foreach (unserialize($article->phone_number) as $number)
+                        {{ $number }} - 
+                    @endforeach 
+                </td>
                 <td> {{ $article->location }} </td>
                 <td> {{ $article->wilaya }} </td>
                 <td> {{ $article->type }} </td>

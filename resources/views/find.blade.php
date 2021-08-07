@@ -158,6 +158,12 @@
                         var location = results[i].location == null ? '' : results[i].location;
                         var todo = ''+
                             '<div class="card m-th" onclick="showModal(this)">'+
+                                '<input class="item-id" type="hidden" value="' + data[i].id + '">' +
+                                '<input class="item-name" type="hidden" value="' + data[i].name + '">' +
+                                '<input class="item-type" type="hidden" value="' + data[i].type + '">' +
+                                '<input class="item-type" type="hidden" value="' + data[i].cost + '">' +
+                                '<input class="item-location" type="hidden" value="' + data[i].location + '">' +
+                                '<input class="item-wilaya" type="hidden" value="' + data[i].wilaya + '">' +
                                 '<input class="phone-array" type="hidden" value="' + phone_array + '">' +
                                 '<div class="row justify-between">'+
                                     '<div class="name" v-text="item.name">' + 

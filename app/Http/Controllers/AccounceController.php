@@ -8,6 +8,8 @@ use App\Models\Type;
 use App\Models\Wilaya;
 use App\Models\Article;
 use App\Models\Message;
+use App\Models\Report;
+use App\Models\Signal;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
@@ -73,6 +75,40 @@ class AccounceController extends Controller
     {
         $articles = Auth()->user()->articles()->get();
         return view('annonces.edit', ['articles' => $articles]);
+    }
+
+    public function report(Request $request)
+    {
+        //XSRF-TOKEN, laravel_session
+        //veryfi if the client already reported the post
+        $reported = Report::where('article_id', $request->id)->where('reporter_token', $request->cookie('XSRF-TOKEN'))->count();
+
+        //if client havent reported this article
+        if($reported == 0) 
+        {
+            $report = new Report;
+            $report->article_id = $request->id;
+            $report->reporter_token = $request->cookie('XSRF-TOKEN');
+            $report->save();
+
+            //check if anything more then 10
+            $signal = Report::where('article_id', $request->id)->count();
+            if($signal > 7) 
+            { 
+                $delete = new Signal;
+                $delete->article_id = $request->id;
+                $delete->save();
+            }
+
+            return Response::json(['signaled' => 'merci pour votre contribution, il rest '. 7 - $signal . ' sur 7 de signal afin de supprimer cette annonce'], 200);
+        }
+        else 
+        {
+            return Response::json(['already' => 'Vous avez deja signaler cette annonce'], 200);
+            //Toastr::success('Vous avez deja signaler cette annonce ', '', ["positionClass" => "toast-top-center"]);
+        }
+
+
     }
 
     public function find(Request $request)

@@ -39,6 +39,16 @@
     Messages
     </li>
   </a>
+  <a href="{{ route('admin.reported') }}">
+    <li class="{{ (request()->is('Jervi/reported')) ? 'active' : '' }}" >
+    Reported
+    </li>
+  </a>
+  <a href="{{ route('admin.toDelete') }}">
+    <li class="{{ (request()->is('Jervi/toDelete')) ? 'active' : '' }}" >
+    to Delete
+    </li>
+  </a>
 </ul>
 <style>
   @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Cost;
 use App\Models\Type;
 use App\Models\User;
+use App\Models\Report;
 use App\Models\Wilaya;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -33,7 +34,9 @@ class Article extends Model
         return $this->belongsTo(Cost::class);
     }
 
-    
-
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
 
 }
