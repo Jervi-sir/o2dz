@@ -29,14 +29,48 @@
                 </div>
             </button>
         </div>
-        <div id="target-signal" class="signal" onclick="signal(this)" data-myvalue="37">
-            <input type="hidden" id="modal-target" value="">
+        <input type="hidden" id="modal-target" value="">
+        <div id="target-signal" class="signal" onclick="confirmSignal()">
             <h4>
                 si l'annonce est fausse, <p> clicker pour signaler </p> 
             </h4>
+            
         </div>
     </div>
-    
+    <style>
+        .signal .confirm .choice {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .signal .confirm .choice button {
+            width: 50%;
+            background: transparent;
+            border: none;
+        }
+        #yes {
+            background: #f96868b8;
+            padding: 5px 0;
+            color: white;
+        }
+        #yes:hover {
+            cursor: pointer;
+            background: #ff8989b8;
+            color: black;
+            transition: 0.5s;
+        }
+        #no {
+            background: #61b961a6;
+            padding: 5px 0;
+            color: white;
+        }
+        #no:hover {
+            cursor: pointer;
+            background: #8dd48da6;
+            color: black;
+            transition: 0.5s;
+        }
+    </style>
 </div>
 <script>
     var clicked_on_report = 0;
@@ -49,13 +83,25 @@
         close.click(function() {
             modal.hide();
             clicked_on_report = 0
+            var content = '' + 
+            '<h4>si lannonce est fausse, <p> clicker pour signaler </p></h4>';
+            setTimeout(function(){
+                $('#target-signal').empty();
+                $('#target-signal').append(content);
+            }, 50);
             //console.log('close');
         });
 
         $(window).click(function(event) {
             if(event.target.id == 'myModal'){
                 $('#myModal').css({display: "none"});
-                clicked_on_report = 0
+                clicked_on_report = 0;
+                var content = '' + 
+                '<h4>si lannonce est fausse, <p> clicker pour signaler </p></h4>';
+                setTimeout(function(){
+                    $('#target-signal').empty();
+                    $('#target-signal').append(content);
+                }, 50);
             }
         });
 
@@ -90,17 +136,47 @@
         document.getElementById("target-location").innerText = location + ' - ' + wilaya; //Location
     }
 
-    function signal(ele) {
+    function confirmSignal() {
 
+        var content = '' +
+            '<div class="confirm" id="confirm">'+
+                '<h4>êtes-vous sûr ?</h4>'+
+                '<div class="choice">'+
+                    '<button id="yes" onclick="signal(this)">oui</button>'+
+                    '<button id="no" onclick="noSignal(this)">cancel</button>'+
+                '</div>'+
+            '</div>';
+        $('#target-signal').empty();
+        $('#target-signal').append(content);
+
+    }
+
+    function noSignal(ele) {
+        var content = '' + 
+        '<h4>si lannonce est fausse, <p> clicker pour signaler </p></h4>';
+        setTimeout(function(){
+            $('#target-signal').empty();
+            $('#target-signal').append(content);
+        }, 50);
+    }
+
+    function signal(ele) {
+        var content = '' + 
+        '<h4>si lannonce est fausse, <p> clicker pour signaler </p></h4>';
+        setTimeout(function(){
+            $('#target-signal').empty();
+            $('#target-signal').append(content);
+        }, 50);
+
+        //ajax
         if(clicked_on_report == 0)
         {
-            //ajax
             $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
                     }
                 });
-                var data = ele.children[0].value;
+                var data = $('#modal-target').val();
                 console.log(data);
                 var type = "POST";
                 var ajaxurl = 'announce/report';
@@ -133,20 +209,27 @@
             toastr.warning('Vous avez deja signaler cette annonce','');
         }
     }
+
+
+
 </script>
 
 <style>
     .signal {
         margin-top: 1rem;
     }
-    .signal h4 {
+    .signal {
         text-align: center;
         background: #8dafee85;
         color: #d3e3ff;
         color: white;
         font-weight: 100;
-        padding: 5px 10px;
+        /*padding: 5px 10px;*/
         border-radius: 15px;
+        overflow: hidden;
+    }
+    .signal h4 {
+        padding: 5px 20px;
     }
     .signal:hover {
         background: #8dafeec7;

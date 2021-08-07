@@ -58,18 +58,7 @@
     </h3>
 </div>
 @include('modals.show')
- <!--
-<div id="toast" class="alert-container">
-    <div class="alert">
-     
-    </div>
-</div>
--->
-<style>
 
-
-
-</style>
 @endsection
 
 @section('style')
@@ -81,7 +70,7 @@
     }
     .bottom-message a {
         letter-spacing: 2px;
-        color: rgb(73, 73, 73);
+        color: rgb(64 154 27);
     }
 .slide-up {
     transform: translateY(0);
@@ -193,8 +182,11 @@
                                 '</div>'+
                                 '<div class="phone-number ">'+
                                     '<span>'+ 
-                                    phone_array  + 
+                                    phone_array[0].substring(0, 8)  + ' . . . ...' +
                                     '</span>'+
+                                    '<span class="unselectable ">(' +
+                                        (phone_array.length) +
+                                    ')<u> voir</u></span>' +
                                 '</div>'+
                             '</div>';
                         jQuery('#article-list').append(todo);
@@ -251,8 +243,11 @@
                                 '</div>'+
                                 '<div class="phone-number ">'+
                                     '<span>'+ 
-                                    phone_array + 
+                                    phone_array[0].substring(0, 8)  + ' . . . ...' +
                                     '</span>'+
+                                    '<span class="unselectable ">(' +
+                                        (phone_array.length) +
+                                    ')<u> voir</u></span>' +
                                 '</div>'+
                             '</div>';
                     jQuery('#article-list').append(todo);
@@ -293,8 +288,11 @@
                                 '</div>'+
                                 '<div class="phone-number ">'+
                                     '<span>'+ 
-                                    phone_array + 
+                                    phone_array[0].substring(0, 8)  + ' . . . ...' +
                                     '</span>'+
+                                    '<span class="unselectable ">(' +
+                                        (phone_array.length) +
+                                    ')<u> voir</u></span>' +
                                 '</div>'+
                             '</div>';
                 jQuery('#article-list').append(todo);
