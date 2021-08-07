@@ -170,7 +170,7 @@
                     closeEasing: false,
                     closeOnHover: true,
 
-                    extendedTimeOut: 1000,
+                    extendedTimeOut: 750,
                     iconClasses: {
                         error: 'toast-error',
                         info: 'toast-info',
@@ -179,7 +179,7 @@
                     },
                     iconClass: 'toast-info',
                     positionClass: 'toast-top-right',
-                    timeOut: 5000, // Set timeOut and extendedTimeOut to 0 to make it sticky
+                    timeOut: 1750, // Set timeOut and extendedTimeOut to 0 to make it sticky
                     titleClass: 'toast-title',
                     messageClass: 'toast-message',
                     escapeHtml: false,
