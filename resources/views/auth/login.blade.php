@@ -2,13 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/toastr.css">
-    <script src="js/toastr.js"></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+    <meta name="Content-Language" content="arabic">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="canonical" href="https://o2dz.com/">
+    <meta name="keywords" content="oxygene, algerie, dz, o2dz, fournisseur d'oxygene, help, site oxygene">
+    <meta name="author" content="2kings-websites Gacem aka Jervi, Aymen aka iverj">
+    <meta name="copyright" content="2kings-websites">
+    <meta name="description" content="موقع اين يمكنك العثور على معدات الأكسجين ، كما يمكنك الإعلان عن عروضك إذا كان لديك معدات أكسجين تريد توفيرها">
+    
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content=" O2dz - trouver des equipements d'oxygene ">
+    <meta property="ogdescription" content="موقع اين يمكنك العثور على معدات الأكسجين ، كما يمكنك الإعلان عن عروضك إذا كان لديك معدات أكسجين تريد توفيرها">
+    <meta property="og:link" href="https://o2dz.com/">
+    <meta property="og:site_name" href="o2dz">
 
+    <link rel="stylesheet" href="css/main.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/png" href="images/logo.svg"/>
+    <link rel="stylesheet" href="css/toastr.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="js/toastr.js"></script>
     <title>Login</title>
 </head>
 <body>
@@ -34,7 +49,7 @@
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="phone-number" v-for="(input,k) in phone_numbers" :key="k">
-                    <input class="input" name="phone_number" type="text" :value="old('phone_number')" placeholder="Phone Number" required>
+                    <input class="input" name="phone_number" maxlength="10" type="text" :value="old('phone_number')" placeholder="Phone Number" required>
                 </div>
                 <input class="input" name="password" type="password" placeholder="password" autocomplete="new-password" required>
                 <input type="checkbox" name="remember" checked style="display: none">

