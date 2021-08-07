@@ -220,8 +220,8 @@
             {
                 if(results[i].type_id == filter_type)
                 {
-                    var phone_list = (results[i].phone_number).replace('[', '').replace(']', '').replaceAll('"', '');
-                    var phone_array = phone_list.split(',');
+                    var phone_list = data[0].phone_number.replace('["', '').replace('"]', '');
+                    var phone_array = phone_list.split('","');
                     var location = results[i].location == null ? '' : results[i].location;
                     var todo = ''+
                             '<div class="card m-th" onclick="showModal(this)">'+
@@ -263,8 +263,8 @@
         else {
             for(var i = 0; i < results.length; i++)
             {
-                var phone_list = (results[i].phone_number).replace('[', '').replace(']', '').replaceAll('"', '');
-                var phone_array = phone_list.split(',');
+                var phone_list = data[0].phone_number.replace('["', '').replace('"]', '');
+                var phone_array = phone_list.split('","');
                 var location = results[i].location == null ? '' : results[i].location;
                 var todo = ''+
                             '<div class="card m-th" onclick="showModal(this)">'+
