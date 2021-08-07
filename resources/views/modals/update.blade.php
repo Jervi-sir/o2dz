@@ -56,15 +56,25 @@
             </form>
         </div>
         <div class="btn-container">
-            <button class="btn" type="submit" onclick="submitUpdate()">Save</button>
+            <button class="btn" type="submit" onclick="submitUpdate(this)">Save</button>
             <button class="btn"  id="close-modal">Cancel</button>
         </div>
     </div>
 </div>
 
+<style>
+    #updateModal .header-text {
+        height: 440px;
+        overflow-y: auto;
+        width: 100%;
+        padding: 0 2rem;
+    }
+</style>
+
 <script>
     
     function submitUpdate() {
+        this.disabled = true;
         var form = document.getElementById("updateModal");
         var btn = document.getElementById('update-submit-btn');
         btn.click();

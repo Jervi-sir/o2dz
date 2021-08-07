@@ -21,7 +21,7 @@
     </div>
     <div id="article-list">
         @foreach ($articles as $article)
-        <div class="item" id="nth-item_{{ $loop->index }}" onclick="showModal(this)">
+        <div class="item" id="nth-item_{{ $loop->index }}" >
             @if(!$article->active)
                 <div class="frozen">
                     <h1>Votre annonce est cachée</h1>
@@ -154,6 +154,7 @@
     top: 0;
     left: 0;
     backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     height: 100%;
     width: 100%;
 }
