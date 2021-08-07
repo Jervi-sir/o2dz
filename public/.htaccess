@@ -6,8 +6,8 @@
     RewriteEngine On
 
     # Handle Authorization Header
-    RewriteCond %{SERVER_PORT} 80 
-    RewriteRule ^(.*)$ https://www.o2dz.com/$1 [R,L]
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
