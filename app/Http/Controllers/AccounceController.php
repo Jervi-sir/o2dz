@@ -114,9 +114,19 @@ class AccounceController extends Controller
 
     public function find(Request $request)
     {
-        $ip = new Visitor;
-        $ip->ip = $request->ip();
-        $ip->save();
+        $ipRequest = $request->ip();
+        $visitor = Visitor::where('ip', $ipRequest)->first();
+        if($visitor == null)
+        {
+            $ip = new Visitor;
+            $ip->ip = $request->ip();
+            $ip->save();
+        }
+        else 
+        {
+            $visitor->count++;
+            $visitor->save();
+        }
 
         $only_walayas = [];
         //$count_per_wilaya = [];
