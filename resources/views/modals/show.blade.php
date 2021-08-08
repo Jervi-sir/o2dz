@@ -19,6 +19,11 @@
                 </div>
             </div>
             <div class="card">
+                <div class="text-element description-modal">
+                    <p class="l-name" id="target-description">Description</p>
+                </div>
+            </div>
+            <div class="card">
                 <div id="phone-list" class="text-element">
                     
                 </div>
@@ -37,40 +42,7 @@
             
         </div>
     </div>
-    <style>
-        .signal .confirm .choice {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-        }
-        .signal .confirm .choice button {
-            width: 50%;
-            background: transparent;
-            border: none;
-        }
-        #yes {
-            background: #f96868b8;
-            padding: 5px 0;
-            color: white;
-        }
-        #yes:hover {
-            cursor: pointer;
-            background: #ff8989b8;
-            color: black;
-            transition: 0.5s;
-        }
-        #no {
-            background: #61b961a6;
-            padding: 5px 0;
-            color: white;
-        }
-        #no:hover {
-            cursor: pointer;
-            background: #8dd48da6;
-            color: black;
-            transition: 0.5s;
-        }
-    </style>
+ 
 </div>
 <script>
     var clicked_on_report = 0;
@@ -125,6 +97,8 @@
         var location = element.children[4].value;
         var wilaya = element.children[5].value;
         var phone_list = element.children[6].value;
+        var description = element.children[7].value;
+        var user_type = element.children[8].value;
 
         var phone_array = phone_list.split(',');
         $("#phone-list").empty();
@@ -146,6 +120,7 @@
         document.getElementById("target-name").innerText = name; //Name
         document.getElementById("target-type").innerText = type; //Name
         document.getElementById("target-cost").innerText = cost;//Name
+        document.getElementById("target-description").innerText = description;//Name
         document.getElementById("target-location").innerText = location + ' - ' + wilaya; //Location
     }
 
@@ -265,6 +240,11 @@
         margin: auto;
     }
 
+    .description-modal {
+        padding: 0 3rem;
+        text-align: center;
+    }
+
     #phone-list {
         display: grid;
         text-align: center;
@@ -284,5 +264,36 @@
         margin-right: 0.5rem;
     }
     
-
+    .signal .confirm .choice {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .signal .confirm .choice button {
+            width: 50%;
+            background: transparent;
+            border: none;
+        }
+        #yes {
+            background: #f96868b8;
+            padding: 5px 0;
+            color: white;
+        }
+        #yes:hover {
+            cursor: pointer;
+            background: #ff8989b8;
+            color: black;
+            transition: 0.5s;
+        }
+        #no {
+            background: #61b961a6;
+            padding: 5px 0;
+            color: white;
+        }
+        #no:hover {
+            cursor: pointer;
+            background: #8dd48da6;
+            color: black;
+            transition: 0.5s;
+        }
 </style>

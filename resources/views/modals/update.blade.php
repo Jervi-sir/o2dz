@@ -44,6 +44,11 @@
                     </select>
                 </div>
                 <div class="row">
+                    <label for="modal_cost">description</label>
+                    <textarea class="textarea" name="description" onkeyup="countChar(this)" maxlength="100" id="modal_description"></textarea>
+                    <div id="charNum"></div>
+                </div>
+                <div class="row">
                     <label for="modal_phoneNumber">Phone Number</label>
                     <div id="modal_phoneNumber">
                        
@@ -83,19 +88,31 @@
         var index = $('.phone-number').length + 1;
         $('#modal_phoneNumber').append('' +
             '<div class="phone-number">'+
-                '<input class="phone_input" name="phone_number[' + index + ']" minlength="8" maxlength="10" type="text" required>'+
+                '<input class="phone_input" name="phone_number[' + index + ']" onkeyup="onlyNumbers(this)" minlength="8" maxlength="10" type="text" required>'+
                 '<span class="input-group-btn">'+
                     '<button type="button" class="btn-remove-phone">-</button>'+
                 '</span>'+
             '</div>'
         );
     }
+    
+    function onlyNumbers(ele) {
+        var number = "";
+        for(var i = 0; i < ele.value.length; i++) {
+            if(!isNaN(ele.value[i])) {
+                number += ele.value[i];
+            }
+        }
+        ele.value = number;
+    }
+
     function updateItem(nth) {
         //get data from dom
         var id = $('#id_' + nth).val();
         var wilaya_id = $('#wilaya_id_' + nth).val();
         var type_id = $('#type_id_' + nth).val();
         var cost_id = $('#cost_id_' + nth).val();
+        var description = $('#description_' + nth).text();
         var type = $('#type_' + nth).text();
         var cost = $('#cost_' + nth).text();
         var date = $('#date_' + nth).text();
@@ -111,8 +128,9 @@
         $('#modal_wilaya').val(wilaya_id) ; 
         $('#modal_type').val(type_id) ; 
         $('#modal_cost').val(cost_id) ; 
+        $('#modal_description').val(description) ; 
         $('#modal_name').val(name) ; 
-
+        
         $('#modal_phoneNumber').val(phone_number) ; 
         $(document.body).on('click', '.btn-remove-phone' ,function(){
             $(this).closest('.phone-number').remove();
@@ -170,6 +188,34 @@
         });
         
     }
+
+
+    function countChar(ele)
+    {
+        //console.log(ele.maxLength);
+        var len = ele.value.length;
+        if (len >= 101) {
+            ele.value = ele.value.substring(0, 100);
+        } else {
+            $('#charNum').text(( 100 - len ) + ' / 100');
+            if (len < 20) {
+                $('#charNum').css('color', '#666');
+            }
+            if (len > 20 && len < 50) {
+                $('#charNum').css('color', '#6d5555');
+            }
+            if (len > 50 && len < 70) {
+                $('#charNum').css('color', '#793535');
+            }
+            if (len > 70 && len < 90) {
+                $('#charNum').css('color', '#841c1c');
+            }
+            if (len > 90 && len < 99) {
+                $('#charNum').css('color', '#8f0001');
+            }
+        }
+    }
+
 
     
 

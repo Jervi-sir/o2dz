@@ -37,9 +37,14 @@
             <option value="{{ $cost->number }}">{{ $cost->name }}</option>
             @endforeach
         </select>
+        <div>
+            <textarea class="textarea" name="description" onkeyup="countChar(this)" maxlength="100" placeholder="description"></textarea>
+            <div id="charNum"></div>
+        </div>
+        
         <div id="phone-list">
             <div class="phone-input">
-                <input class="input" name="phone[1]" type="text" minlength="8" maxlength="10" value="{{ $phone_number }}" placeholder="Phone Number" required>
+                <input class="input" onkeyup="onlyNumbers(this)"  name="phone[1]" type="text" minlength="8" maxlength="10" value="" placeholder="Phone Number" required>
             </div>
         </div>
         <div class="row-submit add-btn">
@@ -98,7 +103,7 @@ function addPhone() {
         $('#phone-count').text(5 - index + " / 5 ");
         $('#phone-list').append('' +
             '<div class="phone-input">'+
-                '<input class="input" name="phone['+ index +']" minlength="8" maxlength="10" type="text" placeholder="Phone Number" required>'+
+                '<input class="input" name="phone['+ index +']" onkeyup="onlyNumbers(this)" minlength="8" maxlength="10" type="text" placeholder="Phone Number" required>'+
                 '<span class="input-group-btn">'+
                     '<button type="button" class="btn-remove-phone" >-</button>'+
                 '</span>'+
@@ -109,7 +114,42 @@ function addPhone() {
         $('.count-row').addClass('red');
         $('.count-row').addClass('shake');
     }
+}
 
+function countChar(ele)
+{
+    //console.log(ele.maxLength);
+    var len = ele.value.length;
+    if (len >= 101) {
+        ele.value = ele.value.substring(0, 100);
+    } else {
+        $('#charNum').text(( 100 - len ) + ' / 100');
+        if (len < 20) {
+            $('#charNum').css('color', '#666');
+        }
+        if (len > 20 && len < 50) {
+            $('#charNum').css('color', '#6d5555');
+        }
+        if (len > 50 && len < 70) {
+            $('#charNum').css('color', '#793535');
+        }
+        if (len > 70 && len < 90) {
+            $('#charNum').css('color', '#841c1c');
+        }
+        if (len > 90 && len < 99) {
+            $('#charNum').css('color', '#8f0001');
+        }
+    }
+}
+
+function onlyNumbers(ele) {
+    var number = "";
+    for(var i = 0; i < ele.value.length; i++) {
+        if(!isNaN(ele.value[i])) {
+            number += ele.value[i];
+        }
+    }
+    ele.value = number;
 }
 </script>
 @endsection

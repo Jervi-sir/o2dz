@@ -379,6 +379,35 @@ select.custom-select:focus {
     color: #4C4F59;
 }
 
+.textarea {
+    resize: vertical;
+    width: 100%;
+    box-shadow: inset 0px -1px 7px #e5eeff, inset 0px 5px 8px #e5eeff;
+    background: #FAFBFF;
+    border-radius: 6px;
+    border: none;
+    height: 45px;
+    padding: 0 18px;
+    font-family: inherit;
+    font-size: inherit;
+    color: #65859A;
+    font-size: 15px;
+    margin-bottom: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    padding-top: 6px;
+}
+
+.textarea::placeholder {
+    font-family: inherit;
+}
+
+#charNum {
+    text-align: right;
+}
+
 
 /*------------
     Footer

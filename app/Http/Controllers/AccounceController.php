@@ -58,6 +58,7 @@ class AccounceController extends Controller
         $article->type_id = $type->id;
         $article->cost_id = $cost->id;
         $article->location = $request->location;
+        $article->description = $request->description;
 
         $article->name = $request->name;
         $article->phone_number = $phone_encode;
@@ -82,14 +83,15 @@ class AccounceController extends Controller
     {
         //XSRF-TOKEN, laravel_session
         //veryfi if the client already reported the post
-        $reported = Report::where('article_id', $request->id)->where('reporter_token', $request->cookie('XSRF-TOKEN'))->count();
+        $reported = Report::where('article_id', $request->id)->where('reporter_token', $request->ip())->count();
 
         //if client havent reported this article
+        //$request->cookie('XSRF-TOKEN')
         if($reported == 0) 
         {
             $report = new Report;
             $report->article_id = $request->id;
-            $report->reporter_token = $request->cookie('XSRF-TOKEN');
+            $report->reporter_token = $request->ip();
             $report->save();
 
             //check if anything more then 10
@@ -185,6 +187,7 @@ class AccounceController extends Controller
                     'type' => $article->type,
                     'type_id' => $article->type_id,
                     'cost' => $article->cost,
+                    'description' => $article->description,
                     'user_type' => $role == 'admin' ? 'personne' : $role,
                 ];
             array_push($json_array, $json);
@@ -225,6 +228,7 @@ class AccounceController extends Controller
         $item->type = Type::find($request->type)->name;
         $item->cost = Cost::find($request->cost)->name;
         $item->location = $request->location;
+        $item->description = $request->description;
         $item->save();
         
         Toastr::success('Votre annonce a été modifiée 🤍 ', '', ["positionClass" => "toast-top-center"]);

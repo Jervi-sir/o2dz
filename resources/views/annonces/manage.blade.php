@@ -34,8 +34,12 @@
             
             <div class="name" id="name_{{ $loop->index }}">{{ $article->name }}</div>
             <div class="location" >
+                <img src="images/location.svg">
                 <span id="location_{{ $loop->index }}">{{ $article->location }}</span>
                 <span>{{ $article->wilaya_id }} - {{ $article->wilaya }}</span>
+            </div>
+            <div class="description" >
+                <span id="description_{{ $loop->index }}">{{ $article->description }}</span>
             </div>
             
             <div class="details">
@@ -48,14 +52,12 @@
                 <p>
                     date: <span id="date_{{ $loop->index }}">{{ $article->updated_at->isoFormat('d - MMMM - YY') }}</span>
                 </p>
-                
             </div>
             
             <input type="hidden" id="phoneNumber_{{ $loop->index }}" value="{{ json_encode( unserialize( $article->phone_number)) }}">
             @foreach (unserialize($article->phone_number) as $phone)
                 {{ $phone }}
             @endforeach
-            
         </div>
         <div class="tool">
             <div class="edit">
@@ -482,6 +484,13 @@ select.custom-select:focus {
     background-repeat: no-repeat;
     border-color: green;
     outline: 0;
+}
+
+.description {
+    font-size: 15px;
+    line-height: 15px;
+    color: #65859A;
+    margin-bottom: 1rem;
 }
   </style>
 @endsection

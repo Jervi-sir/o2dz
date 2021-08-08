@@ -158,6 +158,7 @@
                                 '<input class="item-location" type="hidden" value="' + data[i].location + '">' +
                                 '<input class="item-wilaya" type="hidden" value="' + data[i].wilaya + '">' +
                                 '<input class="phone-array" type="hidden" value="' + phone_array + '">' +
+                                '<input class="phone-array" type="hidden" value="' + data[i].description + '">' +
                                 '<input class="user_type" type="hidden" value="' + data[i].user_type + '">' +
                                 '<div class="row justify-between">'+
                                     '<div class="name" v-text="item.name">' + 
@@ -230,8 +231,9 @@
                                 '<input class="item-type" type="hidden" value="' + results[i].cost + '">' +
                                 '<input class="item-location" type="hidden" value="' + results[i].location + '">' +
                                 '<input class="item-wilaya" type="hidden" value="' + results[i].wilaya + '">' +
-                                '<input class="user_type" type="hidden" value="' + results[i].user_type + '">' +
                                 '<input class="phone-array" type="hidden" value="' + phone_array + '">' +
+                                '<input class="phone-array" type="hidden" value="' + results[i].description + '">' +
+                                '<input class="user_type" type="hidden" value="' + results[i].user_type + '">' +
                                 '<div class="row justify-between">'+
                                     '<div class="name" v-text="item.name">' + 
                                         results[i].name +
@@ -287,8 +289,9 @@
                                 '<input class="item-type" type="hidden" value="' + results[i].cost + '">' +
                                 '<input class="item-location" type="hidden" value="' + results[i].location + '">' +
                                 '<input class="item-wilaya" type="hidden" value="' + results[i].wilaya + '">' +
-                                '<input class="user_type" type="hidden" value="' + results[i].user_type + '">' +
                                 '<input class="phone-array" type="hidden" value="' + phone_array + '">' +
+                                '<input class="phone-array" type="hidden" value="' + results[i].description + '">' +
+                                '<input class="user_type" type="hidden" value="' + results[i].user_type + '">' +
                                 '<div class="row justify-between">'+
                                     '<div class="name" v-text="item.name">' + 
                                         results[i].name +
