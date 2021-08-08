@@ -18,9 +18,9 @@
     </h2>
     <form action="{{ route('annonce.store') }}" method="POST">
         @csrf
-        <input class="input" name="name" type="text" maxlength="20" onkeyup="nameMax(this)" placeholder="Name" required>
+        <input class="input" name="name" type="text" maxlength="40" onkeyup="nameMax(this)" placeholder="Name" required>
         <div id="nameMax"> </div>
-        <input class="input" name="location" onkeyup="locationMax(this)"  maxlength="30"  type="text" placeholder="location">
+        <input class="input" name="location" onkeyup="locationMax(this)"  maxlength="60"  type="text" placeholder="location">
         <div id="locationMax"> </div>
         <select class="custom-select" name="wilaya_number" >
             @foreach ($wilayas as $wilaya)
@@ -144,23 +144,23 @@ function countChar(ele)
 
 function nameMax(ele) {
     var len = ele.value.length;
-    if (len >= 21) {
-        ele.value = ele.value.substring(0, 20);
+    if (len >= 41) {
+        ele.value = ele.value.substring(0, 40);
     } else {
-        $('#nameMax').text(( 20 - len ) + ' / 20');
+        $('#nameMax').text(( 40 - len ) + ' / 40');
         if (len < 5) {
             $('#nameMax').css('color', '#666');
         }
-        if (len > 5 && len < 7) {
+        if (len > 5 && len < 10) {
             $('#nameMax').css('color', '#6d5555');
         }
-        if (len > 10 && len < 13) {
+        if (len > 10 && len < 20) {
             $('#nameMax').css('color', '#793535');
         }
-        if (len > 13 && len < 17) {
+        if (len > 20 && len < 30) {
             $('#nameMax').css('color', '#841c1c');
         }
-        if (len > 17 && len < 20) {
+        if (len > 30 && len < 40) {
             $('#nameMax').css('color', '#8f0001');
         }
     }
@@ -168,23 +168,23 @@ function nameMax(ele) {
 
 function locationMax(ele) {
     var len = ele.value.length;
-    if (len >= 31) {
-        ele.value = ele.value.substring(0, 30);
+    if (len >= 61) {
+        ele.value = ele.value.substring(0, 60);
     } else {
-        $('#locationMax').text(( 30 - len ) + ' / 30');
-        if (len < 5) {
+        $('#locationMax').text(( 60 - len ) + ' / 60');
+        if (len < 10) {
             $('#locationMax').css('color', '#666');
         }
-        if (len > 5 && len < 10) {
+        if (len > 10 && len < 20) {
             $('#locationMax').css('color', '#6d5555');
         }
-        if (len > 10 && len < 18) {
+        if (len > 20 && len < 30) {
             $('#locationMax').css('color', '#793535');
         }
-        if (len > 18 && len < 25) {
+        if (len > 30 && len < 45) {
             $('#locationMax').css('color', '#841c1c');
         }
-        if (len > 25 && len < 30) {
+        if (len > 45 && len < 60) {
             $('#locationMax').css('color', '#8f0001');
         }
     }

@@ -110,6 +110,17 @@
 
 }
 
+.type {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.cost {
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+
 
 </style>
 @endsection
@@ -164,8 +175,14 @@
                                     '<div class="name" v-text="item.name">' + 
                                         data[i].name +
                                     '</div>'+ 
+                                ' </div>'+
+                                '<div class="row">'+
                                     '<div class="type"> ' +
-                                        data[i].type +
+                                            data[i].type +
+                                    '</div>' +
+                                    '<span> - </span>'+
+                                    '<div class="cost">'  +
+                                        data[i].cost +
                                     '</div>' +
                                 ' </div>'+
                                 '<div class="row justify-between">'+
@@ -177,9 +194,6 @@
                                         data[i].wilaya + 
                                         '</span>'+
                                     '</div>'+
-                                    '<div class="cost">'  +
-                                        data[i].cost +
-                                    '</div>' +
                                 '</div>'+
                                 '<div class="phone-number ">'+
                                     '<div>'+
@@ -238,8 +252,14 @@
                                     '<div class="name" v-text="item.name">' + 
                                         results[i].name +
                                     '</div>'+ 
+                                ' </div>'+
+                                '<div class="row">'+
                                     '<div class="type"> ' +
-                                        results[i].type +
+                                            results[i].type +
+                                    '</div>' +
+                                    '<span> - </span>'+
+                                    '<div class="cost">'  +
+                                        results[i].cost +
                                     '</div>' +
                                 ' </div>'+
                                 '<div class="row justify-between">'+
@@ -251,9 +271,6 @@
                                         results[i].wilaya + 
                                         '</span>'+
                                     '</div>'+
-                                    '<div class="cost">'  +
-                                        results[i].cost +
-                                    '</div>' +
                                 '</div>'+
                                 '<div class="phone-number ">'+
                                     '<div>'+
@@ -296,8 +313,14 @@
                                     '<div class="name" v-text="item.name">' + 
                                         results[i].name +
                                     '</div>'+ 
+                                ' </div>'+
+                                '<div class="row">'+
                                     '<div class="type"> ' +
-                                        results[i].type +
+                                            results[i].type +
+                                    '</div>' +
+                                    '<span> - </span>'+
+                                    '<div class="cost">'  +
+                                        results[i].cost +
                                     '</div>' +
                                 ' </div>'+
                                 '<div class="row justify-between">'+
@@ -309,9 +332,6 @@
                                         results[i].wilaya + 
                                         '</span>'+
                                     '</div>'+
-                                    '<div class="cost">'  +
-                                        results[i].cost +
-                                    '</div>' +
                                 '</div>'+
                                 '<div class="phone-number ">'+
                                     '<div>'+

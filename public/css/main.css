@@ -363,13 +363,13 @@ select.custom-select:focus {
 .result .card .name {
     font-size: 18px;
     color: #354168;
-    margin-bottom: 8px;
+    /*margin-bottom: 8px;*/
 }
 
 .result .card .location {
     font-size: 15px;
     color: #65859A;
-    margin-bottom: 15px;
+    margin-bottom: 0.5rem;
 }
 
 .result .card .phone-number {
