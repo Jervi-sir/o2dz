@@ -35,7 +35,7 @@ class CreateArticlesTable extends Migration
             $table->string('cost');
             $table->string('location')->nullable();
             $table->string('image')->nullable();
-            $table->string('description')->nullable();
+            $table->string('description')->default('');
 
             $table->timestamps();
         });

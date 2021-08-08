@@ -18,10 +18,10 @@
     </h2>
     <form action="{{ route('annonce.store') }}" method="POST">
         @csrf
-        <div class="phone-number" v-for="(input,k) in phone_numbers" :key="k">
-            <input class="input" name="name" type="text" placeholder="Name" required>
-        </div>
-        <input class="input" name="location" type="text" placeholder="location" required>
+        <input class="input" name="name" type="text" maxlength="20" onkeyup="nameMax(this)" placeholder="Name" required>
+        <div id="nameMax"> </div>
+        <input class="input" name="location" onkeyup="locationMax(this)"  maxlength="30"  type="text" placeholder="location">
+        <div id="locationMax"> </div>
         <select class="custom-select" name="wilaya_number" >
             @foreach ($wilayas as $wilaya)
             <option value="{{ $wilaya->number }}" {{ $wilaya->id == Auth()->user()->wilaya_id ? 'selected' : '' }}>{{ $wilaya->number }} - {{ $wilaya->name }}</option>
@@ -38,7 +38,7 @@
             @endforeach
         </select>
         <div>
-            <textarea class="textarea" name="description" onkeyup="countChar(this)" maxlength="100" placeholder="description"></textarea>
+            <textarea class="textarea" name="description" onkeyup="countChar(this)" maxlength="100" placeholder="description ( غير ملزم )"></textarea>
             <div id="charNum"></div>
         </div>
         
@@ -142,6 +142,53 @@ function countChar(ele)
     }
 }
 
+function nameMax(ele) {
+    var len = ele.value.length;
+    if (len >= 21) {
+        ele.value = ele.value.substring(0, 20);
+    } else {
+        $('#nameMax').text(( 20 - len ) + ' / 20');
+        if (len < 5) {
+            $('#nameMax').css('color', '#666');
+        }
+        if (len > 5 && len < 7) {
+            $('#nameMax').css('color', '#6d5555');
+        }
+        if (len > 10 && len < 13) {
+            $('#nameMax').css('color', '#793535');
+        }
+        if (len > 13 && len < 17) {
+            $('#nameMax').css('color', '#841c1c');
+        }
+        if (len > 17 && len < 20) {
+            $('#nameMax').css('color', '#8f0001');
+        }
+    }
+}
+
+function locationMax(ele) {
+    var len = ele.value.length;
+    if (len >= 31) {
+        ele.value = ele.value.substring(0, 30);
+    } else {
+        $('#locationMax').text(( 30 - len ) + ' / 30');
+        if (len < 5) {
+            $('#locationMax').css('color', '#666');
+        }
+        if (len > 5 && len < 10) {
+            $('#locationMax').css('color', '#6d5555');
+        }
+        if (len > 10 && len < 18) {
+            $('#locationMax').css('color', '#793535');
+        }
+        if (len > 18 && len < 25) {
+            $('#locationMax').css('color', '#841c1c');
+        }
+        if (len > 25 && len < 30) {
+            $('#locationMax').css('color', '#8f0001');
+        }
+    }
+}
 function onlyNumbers(ele) {
     var number = "";
     for(var i = 0; i < ele.value.length; i++) {
@@ -407,8 +454,9 @@ function onlyNumbers(ele) {
     }
 
     .input {
-    font-weight: 100;
-    font-size: 14px;
+        font-weight: 100;
+        font-size: 14px;
+        margin-bottom: 0;
     }
 
     .phone-number {
@@ -436,6 +484,11 @@ function onlyNumbers(ele) {
         background-repeat: no-repeat;
         border-color: green;
         outline: 0;
+    }
+    #nameMax,
+    #locationMax {
+        margin-bottom: 1.5rem;
+        text-align: right;
     }
 
   </style>
