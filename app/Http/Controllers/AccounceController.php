@@ -111,10 +111,10 @@ class AccounceController extends Controller
 
     }
 
-    public function find(Request $request)
+    public function find()
     {
         $only_walayas = [];
-        $count_per_wilaya = [];
+        //$count_per_wilaya = [];
         $wilayas = Wilaya::all();
         foreach ($wilayas as $wilaya)
         {   
@@ -122,9 +122,10 @@ class AccounceController extends Controller
             if($wilaya->articles()->count())
             {
                 //wilaya has articles
-                $count = 0;
+                //$count = 0;
                 //push this wilaya
                 array_push($only_walayas, $wilaya);
+                /*
                 foreach ($wilaya->articles()->get() as $article)
                 {   
                     //one article
@@ -135,15 +136,18 @@ class AccounceController extends Controller
                     }
                 }
                 array_push($count_per_wilaya, $count);
+                */
             }
         }
+       
+        
         $article_active = Article::where('active',1)->count();    
 
         $message = Message::inRandomOrder()->first()->text;
 
         $types = Type::all();
         Toastr::success($message , '', ["positionClass" => "toast-bottom-center"]);
-        return view('find', ['wilayas' => $only_walayas, 'types' => $types, 'count' => $count_per_wilaya, 'active_count' => $article_active]);
+        return view('find', ['wilayas' => $only_walayas, 'types' => $types, 'active_count' => $article_active]);
     }
     
     public function findGet(Request $request)
@@ -151,14 +155,27 @@ class AccounceController extends Controller
         $wilaya_id = Wilaya::where('number', $request->wilaya_number)->first()->id;
         $articles = Article::where('wilaya_id', $wilaya_id)->where('active', 1)->get();
         //$articles = Article::where('wilaya_id', $wilaya_id)->get();
-        $array_articles = [];
+        //$array_articles = [];
+
+        $json_array = [];
         foreach($articles as $article)
         {
-            $article->phone_number = json_encode( unserialize( $article->phone_number));
-            array_push($array_articles, $article);
-        } 
+            $role = $article->user()->first()->role()->first()->name;
+            $json = [
+                    'id' => $article->id,
+                    'name' => $article->name,
+                    'phone_number' => json_encode(unserialize( $article->phone_number)),
+                    'wilaya' => $article->wilaya,
+                    'location' => $article->location,
+                    'type' => $article->type,
+                    'cost' => $article->cost,
+                    'user_type' => $role == 'admin' ? 'personne' : $role,
+                ];
+            array_push($json_array, $json);
+            //array_push($array_articles, $article);
+        }
 
-        return Response::json($articles);
+        return Response::json($json_array);
     }
 
     public function manage()

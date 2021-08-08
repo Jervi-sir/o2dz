@@ -18,8 +18,8 @@
             @csrf
             <select name="wilaya"class="custom-select" onchange="search(this)">
                 <option value="0" selected disabled hidden>Select Ville</option>
-                @foreach ($wilayas as $wilaya)
-                    <option value="{{ $wilaya->number }}">{{ $wilaya->number }} - {{ $wilaya->name }} ( {{ $count[$loop->index] }} )</option>
+                @foreach ($wilayas as $wilaya)     
+                    <option value="{{ $wilaya->number }}">{{ $wilaya->number }} - {{ $wilaya->name }} ( {{ $wilaya->articles()->where('active',1)->count() }} )</option>
                 @endforeach
             </select>
         </form>
@@ -142,11 +142,10 @@
                 dataType: 'json',
                 success: function (data) {
 
-                    //console.log(data);
                     results = data;
                     for(var i = 0; i < data.length; i++)
                     {
-                        var phone_list = data[0].phone_number.replace('["', '').replace('"]', '');
+                        var phone_list = data[i].phone_number.replace('["', '').replace('"]', '');
                         var phone_array = phone_list.split('","');
                         var location = data[i].location == null ? '' : data[i].location;
 
@@ -159,6 +158,7 @@
                                 '<input class="item-location" type="hidden" value="' + data[i].location + '">' +
                                 '<input class="item-wilaya" type="hidden" value="' + data[i].wilaya + '">' +
                                 '<input class="phone-array" type="hidden" value="' + phone_array + '">' +
+                                '<input class="user_type" type="hidden" value="' + phone_array + '">' +
                                 '<div class="row justify-between">'+
                                     '<div class="name" v-text="item.name">' + 
                                         data[i].name +
@@ -181,12 +181,17 @@
                                     '</div>' +
                                 '</div>'+
                                 '<div class="phone-number ">'+
-                                    '<span>'+ 
-                                    phone_array[0].substring(0, 8)  + ' . . . ...' +
-                                    '</span>'+
-                                    '<span class="unselectable ">(' +
-                                        (phone_array.length) +
-                                    ')<u> voir</u></span>' +
+                                    '<div>'+
+                                        '<span>'+ 
+                                        phone_array[0].substring(0, 8)  + ' . . . ...' +
+                                        '</span>'+
+                                        '<span class="unselectable ">(' +
+                                            (phone_array.length) +
+                                        ')<u> voir</u></span>' +
+                                    '</div>'+
+                                    '<div>'+
+                                        data[i].user_type +
+                                    '</div>'+
                                 '</div>'+
                             '</div>';
                         jQuery('#article-list').append(todo);
@@ -214,7 +219,7 @@
             {
                 if(results[i].type_id == filter_type)
                 {
-                    var phone_list = results[0].phone_number.replace('["', '').replace('"]', '');
+                    var phone_list = results[i].phone_number.replace('["', '').replace('"]', '');
                     var phone_array = phone_list.split('","');
                     var location = results[i].location == null ? '' : results[i].location;
                     var todo = ''+
@@ -242,12 +247,17 @@
                                     '</div>' +
                                 '</div>'+
                                 '<div class="phone-number ">'+
-                                    '<span>'+ 
-                                    phone_array[0].substring(0, 8)  + ' . . . ...' +
-                                    '</span>'+
-                                    '<span class="unselectable ">(' +
-                                        (phone_array.length) +
-                                    ')<u> voir</u></span>' +
+                                    '<div>'+
+                                        '<span>'+ 
+                                        phone_array[0].substring(0, 8)  + ' . . . ...' +
+                                        '</span>'+
+                                        '<span class="unselectable ">(' +
+                                            (phone_array.length) +
+                                        ')<u> voir</u></span>' +
+                                    '</div>'+
+                                    '<div>'+
+                                        data[i].user_type +
+                                    '</div>'+
                                 '</div>'+
                             '</div>';
                     jQuery('#article-list').append(todo);
@@ -259,7 +269,7 @@
         else {
             for(var i = 0; i < results.length; i++)
             {
-                var phone_list = results[0].phone_number.replace('["', '').replace('"]', '');
+                var phone_list = results[i].phone_number.replace('["', '').replace('"]', '');
                 var phone_array = phone_list.split('","');
                 var location = results[i].location == null ? '' : results[i].location;
                 var todo = ''+
@@ -287,12 +297,17 @@
                                     '</div>' +
                                 '</div>'+
                                 '<div class="phone-number ">'+
-                                    '<span>'+ 
-                                    phone_array[0].substring(0, 8)  + ' . . . ...' +
-                                    '</span>'+
-                                    '<span class="unselectable ">(' +
-                                        (phone_array.length) +
-                                    ')<u> voir</u></span>' +
+                                    '<div>'+
+                                        '<span>'+ 
+                                        phone_array[0].substring(0, 8)  + ' . . . ...' +
+                                        '</span>'+
+                                        '<span class="unselectable ">(' +
+                                            (phone_array.length) +
+                                        ')<u> voir</u></span>' +
+                                    '</div>'+
+                                    '<div>'+
+                                        data[i].user_type +
+                                    '</div>'+
                                 '</div>'+
                             '</div>';
                 jQuery('#article-list').append(todo);

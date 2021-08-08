@@ -374,6 +374,7 @@ select.custom-select:focus {
 
 .result .card .phone-number {
     display: flex;
+    justify-content: space-between;
     font-size: 15px;
     color: #4C4F59;
 }
