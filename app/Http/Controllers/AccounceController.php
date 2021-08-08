@@ -183,6 +183,7 @@ class AccounceController extends Controller
                     'wilaya' => $article->wilaya,
                     'location' => $article->location,
                     'type' => $article->type,
+                    'type_id' => $article->type_id,
                     'cost' => $article->cost,
                     'user_type' => $role == 'admin' ? 'personne' : $role,
                 ];

@@ -158,7 +158,7 @@
                                 '<input class="item-location" type="hidden" value="' + data[i].location + '">' +
                                 '<input class="item-wilaya" type="hidden" value="' + data[i].wilaya + '">' +
                                 '<input class="phone-array" type="hidden" value="' + phone_array + '">' +
-                                '<input class="user_type" type="hidden" value="' + phone_array + '">' +
+                                '<input class="user_type" type="hidden" value="' + data[i].user_type + '">' +
                                 '<div class="row justify-between">'+
                                     '<div class="name" v-text="item.name">' + 
                                         data[i].name +
@@ -224,6 +224,13 @@
                     var location = results[i].location == null ? '' : results[i].location;
                     var todo = ''+
                             '<div class="card m-th" onclick="showModal(this)">'+
+                                '<input class="item-id" type="hidden" value="' + results[i].id + '">' +
+                                '<input class="item-name" type="hidden" value="' + results[i].name + '">' +
+                                '<input class="item-type" type="hidden" value="' + results[i].type + '">' +
+                                '<input class="item-type" type="hidden" value="' + results[i].cost + '">' +
+                                '<input class="item-location" type="hidden" value="' + results[i].location + '">' +
+                                '<input class="item-wilaya" type="hidden" value="' + results[i].wilaya + '">' +
+                                '<input class="user_type" type="hidden" value="' + results[i].user_type + '">' +
                                 '<input class="phone-array" type="hidden" value="' + phone_array + '">' +
                                 '<div class="row justify-between">'+
                                     '<div class="name" v-text="item.name">' + 
@@ -256,7 +263,7 @@
                                         ')<u> voir</u></span>' +
                                     '</div>'+
                                     '<div>'+
-                                        data[i].user_type +
+                                        results[i].user_type +
                                     '</div>'+
                                 '</div>'+
                             '</div>';
@@ -274,6 +281,13 @@
                 var location = results[i].location == null ? '' : results[i].location;
                 var todo = ''+
                             '<div class="card m-th" onclick="showModal(this)">'+
+                                '<input class="item-id" type="hidden" value="' + results[i].id + '">' +
+                                '<input class="item-name" type="hidden" value="' + results[i].name + '">' +
+                                '<input class="item-type" type="hidden" value="' + results[i].type + '">' +
+                                '<input class="item-type" type="hidden" value="' + results[i].cost + '">' +
+                                '<input class="item-location" type="hidden" value="' + results[i].location + '">' +
+                                '<input class="item-wilaya" type="hidden" value="' + results[i].wilaya + '">' +
+                                '<input class="user_type" type="hidden" value="' + results[i].user_type + '">' +
                                 '<input class="phone-array" type="hidden" value="' + phone_array + '">' +
                                 '<div class="row justify-between">'+
                                     '<div class="name" v-text="item.name">' + 
@@ -306,7 +320,7 @@
                                         ')<u> voir</u></span>' +
                                     '</div>'+
                                     '<div>'+
-                                        data[i].user_type +
+                                        results[i].user_type +
                                     '</div>'+
                                 '</div>'+
                             '</div>';
