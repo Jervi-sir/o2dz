@@ -51,7 +51,7 @@
                 <div class="phone-number" v-for="(input,k) in phone_numbers" :key="k">
                     <input class="input" name="name" type="text" :value="old('name')" placeholder="Name" required>
                 </div>
-                <input class="input" name="phone_number" type="text" maxlength="10" :value="old('phone_number')" placeholder="Phone Number" required>
+                <input class="input" name="phone_number" type="text" :value="old('phone_number')" placeholder="Username / Phone Number" required>
                 <input class="input" name="password" type="password" placeholder="password" autocomplete="new-password" required>
                 <input class="input" name="password_confirmation" type="password" placeholder="password confirm" required>
                 <select name="role" class="custom-select">

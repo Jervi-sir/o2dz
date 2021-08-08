@@ -49,7 +49,7 @@
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="phone-number" v-for="(input,k) in phone_numbers" :key="k">
-                    <input class="input" name="phone_number" maxlength="10" type="text" :value="old('phone_number')" placeholder="Phone Number" required>
+                    <input class="input" name="phone_number" type="text" :value="old('phone_number')" placeholder="Username / Phone Number" required>
                 </div>
                 <input class="input" name="password" type="password" placeholder="password" autocomplete="new-password" required>
                 <input type="checkbox" name="remember" checked style="display: none">

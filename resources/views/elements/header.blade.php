@@ -122,7 +122,6 @@
     .btn_cont {
         margin-left: auto;
     }
-
     .header-btn:hover {
         cursor: pointer;
         background: #d2e1fa !important;

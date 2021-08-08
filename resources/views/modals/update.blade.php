@@ -15,7 +15,7 @@
                             
                 <div class="row">
                     <label for="modal_location">Location</label>
-                    <input id="modal_location" name="location" onkeyup="locationMax(this)"  maxlength="60"  type="text" required>
+                    <input id="modal_location" name="location" onkeyup="locationMax(this)"  maxlength="60"  type="text">
                     <div id="locationMax"> </div>
                 </div>
                 <div class="row">
