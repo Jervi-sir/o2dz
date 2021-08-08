@@ -10,6 +10,7 @@ use App\Models\Article;
 use App\Models\Message;
 use App\Models\Report;
 use App\Models\Signal;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
@@ -111,8 +112,12 @@ class AccounceController extends Controller
 
     }
 
-    public function find()
+    public function find(Request $request)
     {
+        $ip = new Visitor;
+        $ip->ip = $request->ip();
+        $ip->save();
+
         $only_walayas = [];
         //$count_per_wilaya = [];
         $wilayas = Wilaya::all();
