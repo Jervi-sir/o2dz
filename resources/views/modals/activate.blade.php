@@ -22,6 +22,7 @@
         
         var modal = document.getElementById("activateModal");
         var close = document.getElementById("close-activateModal");
+        var voidd = document.getElementById("activateModal");
         var id = $('#id_' + nth).val();
         
         $('#activate-item-id').val(id) ; 
@@ -34,6 +35,11 @@
         }
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        voidd.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
             }

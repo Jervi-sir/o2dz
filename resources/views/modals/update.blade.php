@@ -133,7 +133,8 @@
 
         var modal = document.getElementById("updateModal");
         var close = document.getElementById("close-modal");
-
+        var voidd = document.getElementById("updateModal");
+        
         modal.style.display = "block";
         // When the user clicks on <close> (x), close the modal
         close.onclick = function() {
@@ -143,6 +144,12 @@
         }
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
+            if (event.target == modal) {
+            $('#modal_phoneNumber').empty();
+                modal.style.display = "none";
+            }
+        }
+        voidd.onclick = function(event) {
             if (event.target == modal) {
             $('#modal_phoneNumber').empty();
                 modal.style.display = "none";

@@ -23,6 +23,7 @@
         
         var modal = document.getElementById("freezeModal");
         var close = document.getElementById("close-freezeModal");
+        var voidd = document.getElementById("freezeModal");
         var id = $('#id_' + nth).val();
         
         $('#freeze-item-id').val(id) ; 
@@ -35,6 +36,11 @@
         }
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        voidd.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
             }

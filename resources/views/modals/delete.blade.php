@@ -21,6 +21,7 @@
     function deleteItem(nth) {
         var modal = document.getElementById("deleteModal");
         var close = document.getElementById("close-deleteModal");
+        var voidd = document.getElementById("deleteModal");
 
         var id = $('#id_' + nth).val();
         
@@ -34,6 +35,11 @@
         }
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        voidd.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
             }

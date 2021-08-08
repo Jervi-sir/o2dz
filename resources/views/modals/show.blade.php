@@ -105,6 +105,19 @@
             }
         });
 
+        $('#myModal').click(function(event) {
+            if(event.target.id == 'myModal'){
+                $('#myModal').css({display: "none"});
+                clicked_on_report = 0;
+                var content = '' + 
+                '<h4>si lannonce est fausse, <p> clicker pour signaler </p></h4>';
+                setTimeout(function(){
+                    $('#target-signal').empty();
+                    $('#target-signal').append(content);
+                }, 50);
+            }
+        });
+
         var id = element.children[0].value;
         var name = element.children[1].value;
         var type = element.children[2].value;
