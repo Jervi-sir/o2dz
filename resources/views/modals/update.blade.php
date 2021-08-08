@@ -9,12 +9,14 @@
                 <input type="hidden" name="item_id" id="update-item-id">
                 <div class="row">
                     <label for="modal_name">Name</label>
-                    <input id="modal_name" name="name" type="text" required>
+                    <input id="modal_name" name="name" maxlength="40" onkeyup="nameMax(this)"  type="text" required>
+                    <div id="nameMax"> </div>
                 </div>
-                
+                            
                 <div class="row">
                     <label for="modal_location">Location</label>
-                    <input id="modal_location" name="location" type="text" required>
+                    <input id="modal_location" name="location" onkeyup="locationMax(this)"  maxlength="60"  type="text" required>
+                    <div id="locationMax"> </div>
                 </div>
                 <div class="row">
                     <label for="modal_wilaya">Wilaya</label>
@@ -216,6 +218,53 @@
         }
     }
 
+    function nameMax(ele) {
+        var len = ele.value.length;
+        if (len >= 41) {
+            ele.value = ele.value.substring(0, 40);
+        } else {
+            $('#nameMax').text(( 40 - len ) + ' / 40');
+            if (len < 5) {
+                $('#nameMax').css('color', '#666');
+            }
+            if (len > 5 && len < 10) {
+                $('#nameMax').css('color', '#6d5555');
+            }
+            if (len > 10 && len < 20) {
+                $('#nameMax').css('color', '#793535');
+            }
+            if (len > 20 && len < 30) {
+                $('#nameMax').css('color', '#841c1c');
+            }
+            if (len > 30 && len < 40) {
+                $('#nameMax').css('color', '#8f0001');
+            }
+        }
+    }
+
+    function locationMax(ele) {
+        var len = ele.value.length;
+        if (len >= 61) {
+            ele.value = ele.value.substring(0, 60);
+        } else {
+            $('#locationMax').text(( 60 - len ) + ' / 60');
+            if (len < 10) {
+                $('#locationMax').css('color', '#666');
+            }
+            if (len > 10 && len < 20) {
+                $('#locationMax').css('color', '#6d5555');
+            }
+            if (len > 20 && len < 30) {
+                $('#locationMax').css('color', '#793535');
+            }
+            if (len > 30 && len < 45) {
+                $('#locationMax').css('color', '#841c1c');
+            }
+            if (len > 45 && len < 60) {
+                $('#locationMax').css('color', '#8f0001');
+            }
+        }
+    }
 
     
 

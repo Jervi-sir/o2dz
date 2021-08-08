@@ -183,7 +183,7 @@
 }
 .modal input {
     padding-left: 1rem;
-    margin-bottom: 1rem;
+    /*margin-bottom: 1rem;*/
 }
 input {
     background: #FAFBFF;
@@ -491,6 +491,12 @@ select.custom-select:focus {
     line-height: 15px;
     color: #65859A;
     margin-bottom: 1rem;
+}
+
+#nameMax,
+#locationMax {
+    margin-bottom: 0.2rem;
+    text-align: right;
 }
   </style>
 @endsection
