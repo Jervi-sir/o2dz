@@ -78,7 +78,7 @@
             </div>
         </div>
         <footer>
-            Made with <i>♥</i> by :: 2KingsWebsites
+            Made with <i>♥</i> by :: <a class="link" href="https://www.instagram.com/2kingswebsites/?hl=en" target="_blank">2KingsWebsites</a> 
         </footer>
     </nav>
 </div>
@@ -129,5 +129,13 @@
         color: lightslategray !important;
         transition: 0.5s;
     }
-
+    .link {
+        text-decoration: underline;
+    }
+    .link:hover {
+        letter-spacing: 2px;
+        filter: grayscale(50%) blur(0.7px);
+        text-decoration: underline;
+        transition: 0.5s;
+    }
 </style>
