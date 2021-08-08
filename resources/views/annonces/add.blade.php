@@ -44,7 +44,7 @@
         
         <div id="phone-list">
             <div class="phone-input">
-                <input class="input" onkeyup="onlyNumbers(this)"  name="phone[1]" type="text" minlength="8" maxlength="10" value="" placeholder="Phone Number" required>
+                <input class="input" onkeyup="onlyNumbers(this)"  name="phone[1]" type="text" minlength="8" maxlength="10" value="{{ is_numeric($phone_number) ? $phone_number : '' }}" placeholder="Phone Number" required>
             </div>
         </div>
         <div class="row-submit add-btn">

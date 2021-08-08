@@ -26,6 +26,7 @@ class AccounceController extends Controller
         $types = Type::all();
         $costs = Cost::all();
         $phone_number = Auth()->user()->phone_number;
+        
         return view('annonces.add', ['wilayas' => $wilayas, 
                                         'types' => $types, 
                                         'costs' => $costs, 
