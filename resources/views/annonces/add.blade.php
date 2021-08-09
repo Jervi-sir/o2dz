@@ -91,11 +91,10 @@
 $(document.body).on('click', '.btn-remove-phone' ,function(){
     $(this).closest('.phone-input').remove();
     var index = $('.phone-input').length;
-    $('#phone-count').text(5 - index + " / 6 ");
+    $('#phone-count').text(5 - index + " / 5 ");
     $('.count-row').removeClass('red');
     $('.count-row').removeClass('shake');
 });
-
 function addPhone() {
     var index = $('.phone-input').length + 1;
     //console.log(index);
@@ -115,7 +114,6 @@ function addPhone() {
         $('.count-row').addClass('shake');
     }
 }
-
 function countChar(ele)
 {
     //console.log(ele.maxLength);
@@ -141,7 +139,6 @@ function countChar(ele)
         }
     }
 }
-
 function nameMax(ele) {
     var len = ele.value.length;
     if (len >= 41) {
@@ -165,7 +162,6 @@ function nameMax(ele) {
         }
     }
 }
-
 function locationMax(ele) {
     var len = ele.value.length;
     if (len >= 61) {

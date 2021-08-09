@@ -17,7 +17,9 @@
         </div>
     </div>
 </div>
+
 <script>
+    // deleteItem
     function deleteItem(nth) {
         var modal = document.getElementById("deleteModal");
         var close = document.getElementById("close-deleteModal");

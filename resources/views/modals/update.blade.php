@@ -55,8 +55,17 @@
                     <div id="modal_phoneNumber">
                        
                     </div>
-                    <div class="row-submit">
+                    <div class="row-submit add-btn">
                         <button type="button" onclick="addPhone()" >Add Phone</button>
+                        <div class="count-row">
+                            <span id="phone-count">
+                            4 / 5 
+                            </span>
+                            <span class="count-text">
+                                <p>numbers</p>
+                                <p>lefts</p>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <button class="btn" id="update-submit-btn" type="submit" style="display: none">Update</button>
@@ -76,26 +85,98 @@
         width: 100%;
         padding: 0 2rem;
     }
+    .shake {
+        animation: shake-animation 3s ease;
+        transform-origin: 50% 50%;
+    }
+
+    @keyframes shake-animation {
+        0% {
+            transform: translate(0, 0);
+        }
+        1.78571% {
+            transform: translate(5px, 0);
+        }
+        3.57143% {
+            transform: translate(0, 0);
+        }
+        5.35714% {
+            transform: translate(5px, 0);
+        }
+        7.14286% {
+            transform: translate(0, 0);
+        }
+        8.92857% {
+            transform: translate(5px, 0);
+        }
+        10.71429% {
+            transform: translate(0, 0);
+        }
+        100% {
+            transform: translate(0, 0);
+        }
+    }
+    .add-btn {
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    .add-btn button:hover,
+    .btn-remove-phone:hover {
+        cursor: pointer;
+        color: black;
+        transition: 0.5s;
+    }
+    .add-btn button {
+        padding: 5px 30px;
+        color: white;
+        background: #19fedf !important;
+        font-weight: 700;
+        padding: 5px 20px !important;
+    }
+
+    .count-row {
+        font-size: 11px;
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        text-align: center;
+    }
 </style>
 
 <script>
-    
+    //btn-remove-phone || submitUpdate || onlyNumbers || updateItem || countChar || nameMax ||locationMax
+    $(document.body).on('click', '.btn-remove-phone' ,function(){
+        $(this).closest('.phone-number').remove();
+        var index = $('.phone-number').length;
+        $('#phone-count').text(5 - index + " / 5 ");
+        $('.count-row').removeClass('red');
+        $('.count-row').removeClass('shake');
+    });
+
     function submitUpdate() {
         this.disabled = true;
         var form = document.getElementById("updateModal");
         var btn = document.getElementById('update-submit-btn');
         btn.click();
     }
+
     function addPhone() {
         var index = $('.phone-number').length + 1;
-        $('#modal_phoneNumber').append('' +
-            '<div class="phone-number">'+
-                '<input class="phone_input" name="phone_number[' + index + ']" onkeyup="onlyNumbers(this)" minlength="8" maxlength="10" type="text" required>'+
-                '<span class="input-group-btn">'+
-                    '<button type="button" class="btn-remove-phone">-</button>'+
-                '</span>'+
-            '</div>'
-        );
+        if(index <= 5) {
+            $('#phone-count').text(5 - index + " / 5 ");
+            $('#modal_phoneNumber').append('' +
+                '<div class="phone-number">'+
+                    '<input class="phone_input" name="phone_number[' + index + ']" onkeyup="onlyNumbers(this)" minlength="8" maxlength="10" type="text" required>'+
+                    '<span class="input-group-btn">'+
+                        '<button type="button" class="btn-remove-phone">-</button>'+
+                    '</span>'+
+                '</div>'
+            );
+        }
+        else {
+            $('.count-row').addClass('red');
+            $('.count-row').addClass('shake');
+        }
     }
     
     function onlyNumbers(ele) {
@@ -122,7 +203,7 @@
         var location = $('#location_' + nth).text();
         var phone_number = $('#phoneNumber_' + nth).val();
         var phone_array = JSON.parse(phone_number);
-        //console.log(phone_number);
+        console.log(phone_array.length);
         
         $('#update-item-id').val(id) ; 
         $('#modal_name').val(name) ; 
@@ -132,6 +213,7 @@
         $('#modal_cost').val(cost_id) ; 
         $('#modal_description').val(description) ; 
         $('#modal_name').val(name) ; 
+        $('#phone-count').text((5 - phone_array.length) + ' / 5') ; 
         
         $('#modal_phoneNumber').val(phone_number) ; 
         $(document.body).on('click', '.btn-remove-phone' ,function(){
@@ -191,9 +273,7 @@
         
     }
 
-
-    function countChar(ele)
-    {
+    function countChar(ele) {
         //console.log(ele.maxLength);
         var len = ele.value.length;
         if (len >= 101) {
@@ -265,7 +345,4 @@
             }
         }
     }
-
-    
-
 </script>

@@ -18,6 +18,7 @@
     </div>
 </div>
 <script>
+    // activateItem
     function activateItem(nth) {
         
         var modal = document.getElementById("activateModal");

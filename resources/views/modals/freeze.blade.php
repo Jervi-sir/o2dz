@@ -18,7 +18,9 @@
     </div>
 </div>
 
+
 <script>
+    // freezeItem
     function freezeItem(nth) {
         
         var modal = document.getElementById("freezeModal");

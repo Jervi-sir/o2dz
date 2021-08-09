@@ -44,7 +44,10 @@
     </div>
  
 </div>
+
+
 <script>
+    //showModal || confirmSignal || noSignal || signal
     var clicked_on_report = 0;
 
     function showModal(element) {
@@ -165,7 +168,7 @@
                     }
                 });
                 var data = $('#modal-target').val();
-                console.log(data);
+               //console.log(data);
                 var type = "POST";
                 var ajaxurl = 'announce/report';
                 $.ajax({
@@ -187,7 +190,7 @@
                         }
                     },
                     error: function (data) {
-                        console.log(data);
+                        //console.log(data);
                     }
                 });
         }
@@ -197,10 +200,8 @@
             toastr.warning('Vous avez deja signaler cette annonce','');
         }
     }
-
-
-
 </script>
+
 
 <style>
     .signal {

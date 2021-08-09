@@ -5,97 +5,94 @@
 @endsection
 
 @section('content')
-{!! Toastr::message() !!}
+    {!! Toastr::message() !!}
 
-<div class="contact">
-    <h1>
-        Thank you choosing to help us
-    </h1>
-    <h2 class="arabic-font">
-        يمكنك نشر 7 إعلانات الأكسجين فقط
-    </h2>
-</div>
-@if($articles->count())
-<div class="result">
-    <div class="row justify-between">
+    <div class="contact">
+        <h1>
+            Thank you choosing to help us
+        </h1>
+        <h2 class="arabic-font">
+            يمكنك نشر 7 إعلانات الأكسجين فقط
+        </h2>
     </div>
-    <div id="article-list">
-        @foreach ($articles as $article)
-        <div class="item" id="nth-item_{{ $loop->index }}" >
-            @if(!$article->active)
-                <div class="frozen">
-                    <h1>Votre annonce est cachée</h1>
+    @if($articles->count())
+    <div class="result">
+        <div class="row justify-between">
+        </div>
+        <div id="article-list">
+            @foreach ($articles as $article)
+            <div class="item" id="nth-item_{{ $loop->index }}" >
+                @if(!$article->active)
+                    <div class="frozen">
+                        <h1>Votre annonce est cachée</h1>
+                    </div>
+                @endif
+                <input type="hidden" value="{{ $article->id }}" id="id_{{ $loop->index }}">
+                <input type="hidden" value="{{ $article->wilaya_id }}" id="wilaya_id_{{ $loop->index }}">
+                <input type="hidden" value="{{ $article->type_id }}" id="type_id_{{ $loop->index }}">
+                <input type="hidden" value="{{ $article->cost_id }}" id="cost_id_{{ $loop->index }}">
+                
+                <div class="name" id="name_{{ $loop->index }}">{{ $article->name }}</div>
+                <div class="location" >
+                    <img src="images/location.svg">
+                    <span id="location_{{ $loop->index }}">{{ $article->location }}</span>
+                    <span>{{ $article->wilaya_id }} - {{ $article->wilaya }}</span>
                 </div>
-            @endif
-            <input type="hidden" value="{{ $article->id }}" id="id_{{ $loop->index }}">
-            <input type="hidden" value="{{ $article->wilaya_id }}" id="wilaya_id_{{ $loop->index }}">
-            <input type="hidden" value="{{ $article->type_id }}" id="type_id_{{ $loop->index }}">
-            <input type="hidden" value="{{ $article->cost_id }}" id="cost_id_{{ $loop->index }}">
-            
-            <div class="name" id="name_{{ $loop->index }}">{{ $article->name }}</div>
-            <div class="location" >
-                <img src="images/location.svg">
-                <span id="location_{{ $loop->index }}">{{ $article->location }}</span>
-                <span>{{ $article->wilaya_id }} - {{ $article->wilaya }}</span>
+                <div class="description" >
+                    <span id="description_{{ $loop->index }}">{{ $article->description }}</span>
+                </div>
+                
+                <div class="details">
+                    <p>
+                        type: <span id="type_{{ $loop->index }}">{{ $article->type }}</span>
+                    </p>
+                    <p>
+                        cost: <span id="cost_{{ $loop->index }}">{{ $article->cost }}</span>
+                    </p>
+                    <p>
+                        date: <span id="date_{{ $loop->index }}">{{ $article->updated_at->isoFormat('d - MMMM - YY') }}</span>
+                    </p>
+                </div>
+                
+                <input type="hidden" id="phoneNumber_{{ $loop->index }}" value="{{ json_encode( unserialize( $article->phone_number)) }}">
+                @foreach (unserialize($article->phone_number) as $phone)
+                    {{ $phone }}
+                @endforeach
             </div>
-            <div class="description" >
-                <span id="description_{{ $loop->index }}">{{ $article->description }}</span>
+            <div class="tool">
+                <div class="edit">
+                    <button onclick="updateItem({{ $loop->index }})" >Modifier</button>
+                </div>
+                @if($article->active)
+                <div class="freeze">
+                    <button onclick="freezeItem({{ $loop->index }})">Cacher</button>
+                </div>
+                @else
+                <div class="activate">
+                    <button onclick="activateItem({{ $loop->index }})">activate</button>
+                </div>
+                @endif
+                
+                <div class="delete">
+                    <button onclick="deleteItem({{ $loop->index }})">Supprimer</button>
+                </div>
             </div>
-            
-            <div class="details">
-                <p>
-                    type: <span id="type_{{ $loop->index }}">{{ $article->type }}</span>
-                </p>
-                <p>
-                    cost: <span id="cost_{{ $loop->index }}">{{ $article->cost }}</span>
-                </p>
-                <p>
-                    date: <span id="date_{{ $loop->index }}">{{ $article->updated_at->isoFormat('d - MMMM - YY') }}</span>
-                </p>
-            </div>
-            
-            <input type="hidden" id="phoneNumber_{{ $loop->index }}" value="{{ json_encode( unserialize( $article->phone_number)) }}">
-            @foreach (unserialize($article->phone_number) as $phone)
-                {{ $phone }}
             @endforeach
         </div>
-        <div class="tool">
-            <div class="edit">
-                <button onclick="updateItem({{ $loop->index }})" >Modifier</button>
-            </div>
-            @if($article->active)
-            <div class="freeze">
-                <button onclick="freezeItem({{ $loop->index }})">Cacher</button>
-            </div>
-            @else
-            <div class="activate">
-                <button onclick="activateItem({{ $loop->index }})">activate</button>
-            </div>
-            @endif
-            
-            <div class="delete">
-                <button onclick="deleteItem({{ $loop->index }})">Supprimer</button>
-            </div>
-        </div>
-        @endforeach
     </div>
-</div>
-@else
-<div class="text-center non-found">
-    <h3 class="">Veuillez ajouter votre announce d'oxygen</h3>
-    <a href="{{ route('annonce.add') }}" class="">  Ajouter une annonce</a>
-</div>
-@endif
-@include('modals.activate')
-@include('modals.delete')
-@include('modals.freeze')
-@include('modals.update')
+    @else
+    <div class="text-center non-found">
+        <h3 class="">Veuillez ajouter votre announce d'oxygen</h3>
+        <a href="{{ route('annonce.add') }}" class="">  Ajouter une annonce</a>
+    </div>
+    @endif
+    @include('modals.activate')
+    @include('modals.delete')
+    @include('modals.freeze')
+    @include('modals.update')
 
 @endsection
 
-@section('script')
-
-@endsection
 
 @section('style')
 <style>
@@ -126,7 +123,7 @@
     flex-direction: row-reverse;
 }
 .row-submit button{
-    padding: 5px 30px;
+    /*padding: 5px 30px;*/
 }
 #phone-list input {
     margin-bottom: 0;
