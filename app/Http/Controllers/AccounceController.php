@@ -58,8 +58,8 @@ class AccounceController extends Controller
         $article->wilaya_id = $wilaya->id;
         $article->type_id = $type->id;
         $article->cost_id = $cost->id;
-        $article->location = $request->location;
-        $article->description = $request->description;
+        $article->location = $request->location ? $request->location : '';
+        $article->description =  $request->description ? $request->description : '';
 
         $article->name = $request->name;
         $article->phone_number = $phone_encode;
@@ -228,8 +228,8 @@ class AccounceController extends Controller
         $item->wilaya = Wilaya::find($request->wilaya)->name;
         $item->type = Type::find($request->type)->name;
         $item->cost = Cost::find($request->cost)->name;
-        $item->location = $request->location;
-        $item->description = $request->description;
+        $item->location = $request->location ? $request->location : '';
+        $item->description = $request->description ? $request->description : '';
         $item->save();
         
         Toastr::success('Votre annonce a été modifiée 🤍 ', '', ["positionClass" => "toast-top-center"]);
