@@ -44,7 +44,7 @@
         <div class="contact-row justify-between">
             <div class="flex-column justify-between ">
                 <div class="left">
-                    Si vous souhaitez annoncer votre équipement d'oxygène ici, veuillez vous connecter / enregistrer
+                    Si vous souhaitez annoncer vos équipement d'oxygène , veuillez s'identifer 
                 </div>
                 <div class="btn_cont">
                     <!-- Logout -->

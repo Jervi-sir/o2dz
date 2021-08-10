@@ -159,13 +159,13 @@ class AccounceController extends Controller
         }
        
         
-        $article_active = Article::where('active',1)->count();    
+        //$article_active = Article::where('active',1)->count();    
 
         $message = Message::inRandomOrder()->first()->text;
 
         $types = Type::all();
         Toastr::success($message , '', ["positionClass" => "toast-bottom-center"]);
-        return view('find', ['wilayas' => $only_walayas, 'types' => $types, 'active_count' => $article_active]);
+        return view('find', ['wilayas' => $only_walayas, 'types' => $types]);
     }
     
     public function findGet(Request $request)

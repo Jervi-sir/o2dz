@@ -9,7 +9,7 @@
 
     <div class="contact">
         <h1>
-            Thank you choosing to help us
+            Thank you for help us
         </h1>
         <h2 class="arabic-font">
             يمكنك نشر 7 إعلانات الأكسجين فقط
@@ -69,7 +69,7 @@
                 </div>
                 @else
                 <div class="activate">
-                    <button onclick="activateItem({{ $loop->index }})">activate</button>
+                    <button onclick="activateItem({{ $loop->index }})">lister</button>
                 </div>
                 @endif
                 

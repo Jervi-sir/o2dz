@@ -14,13 +14,13 @@
     <h2>
         Veuillez remplir les details de l'annonce
         <p>d'oxygène</p>
-        <p class="arabic-font">من فضلك ، لا إعلانات مزيفة🙏</p>
+        <p class="arabic-font">من فضلك🙏</p>
     </h2>
     <form action="{{ route('annonce.store') }}" method="POST">
         @csrf
-        <input class="input" name="name" type="text" maxlength="40" onkeyup="nameMax(this)" placeholder="Name" required>
+        <input class="input" name="name" type="text" maxlength="40" onkeyup="nameMax(this)" placeholder="titre" required>
         <div id="nameMax"> </div>
-        <input class="input" name="location" onkeyup="locationMax(this)"  maxlength="60"  type="text" placeholder="location">
+        <input class="input" name="location" onkeyup="locationMax(this)"  maxlength="60"  type="text" placeholder="lieu">
         <div id="locationMax"> </div>
         <select class="custom-select" name="wilaya_number" >
             @foreach ($wilayas as $wilaya)

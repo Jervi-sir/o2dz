@@ -9,7 +9,7 @@
 <main>
     <div class="row">
         <h5>
-            Select Your Location
+            Sélectionnez Votre Lieu
         </h5>
         <span id="test"></span>
     </div>
@@ -17,7 +17,7 @@
         <form action="{{ route('findGet') }}" method="POST">
             @csrf
             <select name="wilaya"class="custom-select" onchange="search(this)">
-                <option value="0" selected disabled hidden>Select Ville</option>
+                <option value="0" selected disabled hidden>Ville</option>
                 @foreach ($wilayas as $wilaya)     
                     <option value="{{ $wilaya->number }}">{{ $wilaya->number }} - {{ $wilaya->name }} ( {{ $wilaya->articles()->where('active',1)->count() }} )</option>
                 @endforeach
@@ -26,7 +26,7 @@
     </div>
     <div class="row">
         <select name="type " id="type_select" class="custom-select" onchange="filter(this)" disabled> 
-            <option value="0">All</option>
+            <option value="0">afficher tout</option>
             @foreach ($types as $type)
             <option value="{{ $type->id }} ">{{ $type->name }}</option> 
             @endforeach
@@ -43,12 +43,13 @@
 
     <div id="please-message" class="text-center">
         <h3>
-            Please select your wilaya
+            Please sélectionnez Votre wilaya
         </h3>
+    <!--
         <h5>
-            there is around {{ $active_count }} active announces
+            il y a autour $active_count des annonces actives
         </h5>
-        
+    -->
     </div>
     <div id="article-list">
     </div>
