@@ -17,6 +17,7 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', [AccounceController::class, 'find'])->name('annonce.find');
+Route::get('/list', [AccounceController::class, 'find'])->name('annonce.find');
 Route::post('/announce/get', [AccounceController::class, 'findGet'])->name('findGet');
 Route::post('/announce/report', [AccounceController::class, 'report'])->name('report');
 Route::get('/about', [PageController::class, 'about'])->name('about');

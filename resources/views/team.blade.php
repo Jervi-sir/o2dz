@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/main.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Document</title>
+    <title>Team</title>
 </head>
 <body>
     <div class="body">
