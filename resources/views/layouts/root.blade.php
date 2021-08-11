@@ -13,7 +13,7 @@
     
     
     <meta property="og:type" content="website">
-    <meta property="og:title" content=" O2dz - trouver des equipements d'oxygene ">
+    <meta property="og:title" content=" O2dz - Proposer ou trouver des equipements d'oxygene ">
     <meta property="ogdescription" content="موقع اين يمكنك العثور على معدات الأكسجين ، كما يمكنك الإعلان عن عروضك إذا كان لديك معدات أكسجين تريد توفيرها">
     <meta property="og:link" href="https://o2dz.com/">
     <meta property="og:site_name" href="o2dz">
