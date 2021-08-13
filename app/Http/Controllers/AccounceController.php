@@ -189,7 +189,7 @@ class AccounceController extends Controller
                     'type_id' => $article->type_id,
                     'cost' => $article->cost,
                     'description' => $article->description,
-                    'user_type' => $role == 'admin' ? 'personne' : $role,
+                    'user_type' => ' ',
                 ];
             array_push($json_array, $json);
             //array_push($array_articles, $article);

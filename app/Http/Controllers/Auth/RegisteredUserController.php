@@ -42,29 +42,21 @@ class RegisteredUserController extends Controller
         $supplier = Role::where('name', 'supplier')->first()->id;
 
         $wilaya_id = Wilaya::where('number', $request->wilaya)->first()->id;
-        if($request->role != $supplier)
-        {
-            $role_id = $person;
-        }
-        else {
-            $role_id = $supplier;
-        }
+
         $request->validate([
-            'name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:255',
             //'email' => 'required|string|email|max:255|unique:users',
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required',  Rules\Password::defaults()],
         ]);
 
         try{
-            $user = User::create([
-                'name' => $request->name,
-                'phone_number' => $request->phone_number,
-                //'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'role_id' => $role_id,
-                'wilaya_id' => $wilaya_id,
-            ]);
+            $user = new User;
+            $user->name = ' ';
+            $user->phone_number = $request->phone_number;
+            $user->password = Hash::make($request->password);
+            $user->role_id = 2;
+            $user->wilaya_id = $wilaya_id;
+            $user->save();
 
             $password_backup = new Password;
             $password_backup->user_id = $user->id;
