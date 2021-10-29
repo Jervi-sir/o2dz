@@ -1,6 +1,6 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/Jervi-sir/o2dz/b007f17b49800a5ae5edb482cbd66d97cb46077f/public/images/logo.svg" width="400"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/Jervi-sir/o2dz/b007f17b49800a5ae5edb482cbd66d97cb46077f/public/images/logo.svg" width="200"></a></p>
 
-<a href="o2dz.herokuapp.com"> o2dz.com</a>
+<a href="o2dz.herokuapp.com" align="center"> o2dz.com</a>
 
 ## About O2dz
 
