@@ -4,6 +4,13 @@
 <a href="https://o2dz.herokuapp.com" target="_blank" align="center"> o2dz.com</a>
 </p>
 
+| :bell: o2dz.com|
+|:--------------------|
+|Oxyden Provider/Marketplace .|
+|Details down below|
+|[atlas form registery](https://o2dz.herokuapp.com/)|
+
+
 ## About O2dz
 
 a platform where you can search for oxygen equipment near to you, 
@@ -13,9 +20,7 @@ if an announcement get reported 7 times, it will get automatically deleted
 
 ## Techs used
 
-- **[Laravel](https://laravel.com/).
-- **[Heroku](https://heroku.com).
+- [Laravel](https://laravel.com/).
+- [Heroku](https://heroku.com).
 
-## License
 
-Personal usage
